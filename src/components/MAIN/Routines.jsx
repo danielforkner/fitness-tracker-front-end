@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getRoutines } from '../../api/fetch';
 import RoutineCard from './RoutineCard';
 
-const Routines = ({ setCurentRoutine }) => {
+const Routines = ({ setCurentRoutine, setOpen}) => {
   const [pubRoutines, setPubRoutines] = useState([{}]);
 
   const fetchRoutines = async () => {
@@ -23,6 +23,7 @@ const Routines = ({ setCurentRoutine }) => {
             key={`routine:${i}`}
             routine={routine}
             setCurentRoutine={setCurentRoutine}
+            setOpen={setOpen}
           />
         );
       })}

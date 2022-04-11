@@ -5,19 +5,28 @@ import { Routes, Route } from 'react-router-dom';
 
 const Main = () => {
   const [curentRoutine, setCurentRoutine] = useState({});
+  const [open, setOpen] = useState(false);
+
+
+
+
+
+
   return (
     <div className="main">
+       
       <Routes>
-        <Route path="*" element={<Routines />}></Route>
+        <Route path="*" element={<Routines setCurentRoutine={setCurentRoutine} setOpen={setOpen}/>}></Route>
         <Route
           path="/Routines"
-          element={<Routines setCurentRoutine={setCurentRoutine} />}
+          element={<Routines setCurentRoutine={setCurentRoutine} setOpen={setOpen} />}
         ></Route>
-        <Route
+        {/* <Route
           path="/Routine_Details/"
           element={<RoutineDetails currentRoutine={curentRoutine} />}
-        ></Route>
+        ></Route> */}
       </Routes>
+      {open && <RoutineDetails currentRoutine={curentRoutine} setOpen={setOpen} open={open}/>}
     </div>
   );
 };
