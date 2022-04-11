@@ -24,6 +24,10 @@ box-sizing: border-box;
   display: flex;
   flex: 1;
 }
+
+.main button, .main h4 {
+  max-height: 5%
+}
 /* ROUTINES */
 
 .routinesContainer {
@@ -57,14 +61,14 @@ float: left;
     display: flex;
     flex: 1;
 }
-sideBarContainer h1 {
+.sideBarContainer h1 {
   width:50%;
   height: 10%;
   text-align: center;
 }
 
 
-NavBarCountainer {
+.NavBarCountainer {
   background-color: brown;
   font-size: 2rem;
 }
