@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import RoutineCard from './RoutineCard';
 
 const Routines = () => {
-  const [routines, setRoutines] = useState([
+  const [pubRoutines, setPubRoutines] = useState([
     { name: 'My Routine' },
     { name: 'Chest Day' },
     { name: 'Back Day' },
@@ -15,7 +15,7 @@ const Routines = () => {
   return (
     <div className="routinesContainer">
       <h4>Routines Container</h4>
-      {routines.map((routine, i) => {
+      {pubRoutines.map((routine, i) => {
         return <RoutineCard routine={routine} />;
       })}
     </div>
