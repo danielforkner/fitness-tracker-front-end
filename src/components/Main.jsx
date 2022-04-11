@@ -1,11 +1,11 @@
 import React from 'react';
-import PublicRoutines from './PublicRoutines';
+import Routines from './Routines';
 
 const Main = () => {
   return (
     <div className="main">
       <h1>MAIN COMPONENT</h1>
-      <PublicRoutines />
+      <Routines />
     </div>
   );
 };

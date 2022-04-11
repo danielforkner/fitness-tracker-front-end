@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+}
+
+/* MAIN */
+.main {
+  border: 1px solid black;
+}
+
+/* SIDE BAR */
+/* bootstrap css */
+
+/* ROUTINES */
+
+.routinesContainer {
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+}
+
+.routineCard {
+  border: 1px solid blue;
+  color: green;
+}
+.routineCard:hover {
+  cursor: pointer;
+  border: 1px solid blue;
+  background-color: lightgreen;
+  color: green;
+}

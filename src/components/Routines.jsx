@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RoutineCard from './RoutineCard';
 
-const PublicRoutines = () => {
+const Routines = () => {
   const [routines, setRoutines] = useState([
     { name: 'My Routine' },
     { name: 'Chest Day' },
@@ -13,7 +13,8 @@ const PublicRoutines = () => {
     { name: 'Cheat Day / Ice Cream' },
   ]);
   return (
-    <div className="publicRoutinesContainer">
+    <div className="routinesContainer">
+      <h4>Routines Container</h4>
       {routines.map((routine, i) => {
         return <RoutineCard routine={routine} />;
       })}
@@ -21,4 +22,4 @@ const PublicRoutines = () => {
   );
 };
 
-export default PublicRoutines;
+export default Routines;
