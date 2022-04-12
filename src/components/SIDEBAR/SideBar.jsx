@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import LoginButton from './Login_Button';
 import NavBar from './NavBar';
 import MyRoutines from './MyRoutines';
-import Login from '../MAIN/Login';
+import Login from './Login';
 
 const SideBar = () => {
   const [openLogin, setOpenLogin] = useState(false);
