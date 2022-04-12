@@ -7,7 +7,6 @@ import Login from './Login';
 const Main = () => {
   const [curentRoutine, setCurentRoutine] = useState({});
   const [open, setOpen] = useState(false);
-  const [openLogin, setOpenLogin] = useState(false);
 
   return (
     <div className="main">
@@ -36,7 +35,6 @@ const Main = () => {
           open={open}
         />
       )}
-      {openLogin && <Login setOpenLogin={setOpenLogin} openLogin={openLogin} />}
     </div>
   );
 };
