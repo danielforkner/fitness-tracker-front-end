@@ -21,7 +21,7 @@ const Login = ({ openLogin, setOpenLogin }) => {
       <Modal.Header>
         <Modal.Title as="h3">Login</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="loginModalBody">
         <form>
           <label htmlFor="username">Username: </label>
           <input
@@ -39,13 +39,13 @@ const Login = ({ openLogin, setOpenLogin }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button style={{ margin: '10px 0' }} onClick={handleSubmit}>
+          <Button style={{ margin: '10px 0' }} onClick={handleSubmit}>
             Submit
-          </button>
+          </Button>
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondar" onClick={handleHide}>
+        <Button variant="secondary" onClick={handleHide}>
           Close
         </Button>
       </Modal.Footer>
