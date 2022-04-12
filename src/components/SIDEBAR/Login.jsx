@@ -4,10 +4,11 @@ import { loginUser, registerUser } from '../../api/fetch';
 import useAuth from '../hooks/useAuth';
 
 const Login = ({ openLogin, setOpenLogin }) => {
-  const { setToken } = useAuth();
+  const { setToken } = useAuth(); 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isRegister, setIsRegister] = useState(false);
+
 
   const handleHide = () => {
     setOpenLogin(false);
@@ -15,17 +16,24 @@ const Login = ({ openLogin, setOpenLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+try{
     if (isRegister) {
       const response = await registerUser(username, password);
+      localStorage.setItem('token', response.token);
       setToken(response.token);
       setIsRegister(false);
+      if (response) {setOpenLogin(false)}
     } else {
       const response = await loginUser(username, password);
-      console.log(response);
-    }
+      localStorage.setItem('token', response.token);
+      setToken(response.token);
+      if (response) {setOpenLogin(false)}
+    }} catch (err) {throw err}
+    finally {
     setUsername('');
     setPassword('');
+    
+    }
   };
 
   return (
@@ -39,7 +47,7 @@ const Login = ({ openLogin, setOpenLogin }) => {
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder="Username...."
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -47,7 +55,7 @@ const Login = ({ openLogin, setOpenLogin }) => {
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Password..."
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

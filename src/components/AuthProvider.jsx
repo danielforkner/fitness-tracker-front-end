@@ -1,5 +1,6 @@
 import AuthContext from '../AuthContext';
 import { useState, useEffect } from 'react';
+import { myUser } from '../api/fetch';
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -8,16 +9,15 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     async function getUser() {
       if (localStorage.getItem('token')) {
-        // Pretend this is from a fetchUser()
-        const newUser = { name: 'Elvis', age: 99, email: 'elvis@elvis.net' };
-        setUser(newUser);
+        const ME = await myUser(token)
+        setUser(ME);
       } else {
         setUser({});
       }
     }
     getUser();
   }, [token]);
-
+  
   return (
     <AuthContext.Provider value={{ user, setUser, token, setToken }}>
       {children}

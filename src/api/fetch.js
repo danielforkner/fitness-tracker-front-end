@@ -40,7 +40,7 @@ export const myUser = async (token) => {
   const response = await fetch(`${apiURL}/users/me`, {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `${token}`
+      'Authorization': `Bearer ${token}`
     }
   })
   const data = await response.json();
@@ -193,7 +193,7 @@ export const deleteRoutine = async (id, token) => {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': '${token}'
+        'Authorization': `Bearer ${token}`
       }
     })
     const data = await response.json();
@@ -250,7 +250,7 @@ export const deleteRoutineActivity = async (id, token) => {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `${token}`
+        'Authorization': `Bearer ${token}`
       }
     })
     const data = await response.json();
