@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { loginUser, registerUser } from '../../api/fetch';
+import useAuth from '../hooks/useAuth';
 
 const Login = ({ openLogin, setOpenLogin }) => {
+  const { setToken } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isRegister, setIsRegister] = useState(false);
@@ -16,7 +18,7 @@ const Login = ({ openLogin, setOpenLogin }) => {
 
     if (isRegister) {
       const response = await registerUser(username, password);
-      console.log(response);
+      setToken(response.token);
       setIsRegister(false);
     } else {
       const response = await loginUser(username, password);
