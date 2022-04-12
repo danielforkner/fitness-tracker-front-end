@@ -17,12 +17,7 @@ const Login = ({ openLogin, setOpenLogin }) => {
   };
 
   return (
-    <Modal
-      show={openLogin}
-      onHide={handleHide}
-      className="loginModalContainer"
-      overlay
-    >
+    <Modal show={openLogin} onHide={handleHide} className="loginModalContainer">
       <Modal.Header>
         <Modal.Title as="h3">Login</Modal.Title>
       </Modal.Header>
