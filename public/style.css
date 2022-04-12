@@ -13,6 +13,10 @@ height: 100%;
 box-sizing: border-box;
 }
 
+.modal {
+height: auto;
+}
+
 /* MAIN */
 .main {
   width: 70%;
@@ -32,6 +36,7 @@ box-sizing: border-box;
 /* ROUTINES */
 
 .routinesContainer {
+  height: auto;
   border: 1px solid gray;
   display: flex;
   flex-direction: column;
@@ -68,6 +73,10 @@ float: left;
   text-align: center;
 }
 
+#loginBtn { 
+  width: auto;
+  height: auto;
+}
 
 .NavBarCountainer {
   background-color: brown;
