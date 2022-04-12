@@ -1,5 +1,4 @@
-require('dotenv').config();
-const apiURL = process.env.API_URL
+const apiURL = process.env.API_URL;
 //----------------------------------------------------------------
 export const registerUser = async (username, password) => {
   const response = await fetch(`${apiURL}/users/register`, {
@@ -43,17 +42,20 @@ export const myUser = async (token) => {
 }
 //----------------------------------------------------------------
 export const getRoutines = async () => {
+
   const response = await fetch(
     `${apiURL}/routines`, {
       headers: {
         'Content-Type': 'application/json',
       }
     })
+
   const data = await response.json();
   return data;
 };
 //----------------------------------------------------------------
 export const getMyRoutines = async (username) => {
+
   const response = await fetch(
     `${apiURL}/${username}/routines`, {
       headers: {
@@ -103,3 +105,4 @@ export const usersRoutines = async (username) => {
 }
 
 //----------------------------------------------------------------
+
