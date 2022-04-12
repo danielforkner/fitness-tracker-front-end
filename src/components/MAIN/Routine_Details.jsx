@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 
 const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
@@ -12,35 +11,26 @@ const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
   // in case fetch fails
   if (!currentRoutine.activities) {
     return (
-      <Modal
-        show={open}
-        onHide={handleHide}
-        className="routineModalContainer"
-        overlay
-      >
+      <Modal show={open} onHide={handleHide} className="routineModalContainer">
         No Data
       </Modal>
     );
   }
   return (
-    <Modal
-      show={open}
-      onHide={handleHide}
-      className="routineModalContainer"
-      overlay
-    >
+    <Modal show={open} onHide={handleHide} className="routineModalContainer">
       <Modal.Header>
-        <Modal.Title as="h3">My Modal heading</Modal.Title>
+        <Modal.Title as="h3">{currentRoutine.name}</Modal.Title>
       </Modal.Header>
       <Modal.Body className="routineModalBody">
         <div>
-          <div>{currentRoutine.name}</div>
           <div>{currentRoutine.goal}</div>
           <div>{currentRoutine.creatorName}</div>
           <div>
-            {activities.map((elem, i) => {
+            {activities.map((elem) => {
               return (
-                <div>{`${elem.name}, ${elem.count}, ${elem.duration}`}</div>
+                <div
+                  key={elem.id}
+                >{`${elem.name}, ${elem.count}, ${elem.duration}`}</div>
               );
             })}
           </div>
