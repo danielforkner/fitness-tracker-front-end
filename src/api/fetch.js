@@ -1,5 +1,17 @@
-const apiURL = process.env.API_URL;
+const apiURL = process.env.REACT_APP_API_URL;
+
 //----------------------------------------------------------------
+export const getRoutines = async () => {
+  console.log('apiURL', apiURL);
+  const response = await fetch(`${apiURL}/routines`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.json();
+  return data;
+};
+//---------------------------------------------------------------
 export const registerUser = async (username, password) => {
   const response = await fetch(`${apiURL}/users/register`, {
     method: "POST",
