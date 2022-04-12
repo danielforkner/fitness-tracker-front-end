@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Routines from './Routines';
 import RoutineDetails from './Routine_Details';
 import { Routes, Route } from 'react-router-dom';
-import Login from './Login';
+import Login from '../SIDEBAR/Login';
 
 const Main = () => {
   const [curentRoutine, setCurentRoutine] = useState({});
