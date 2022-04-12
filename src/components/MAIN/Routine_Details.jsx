@@ -1,16 +1,34 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { Modal, Button} from "react-bootstrap";
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { Modal, Button } from 'react-bootstrap';
 
-
-
-const RoutineDetails = ({currentRoutine, open, setOpen }) => {
+const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
   const { activities } = currentRoutine;
 
-  const handleHide = () => {setOpen(false)}
+  const handleHide = () => {
+    setOpen(false);
+  };
 
+  // in case fetch fails
+  if (!currentRoutine.activities) {
+    return (
+      <Modal
+        show={open}
+        onHide={handleHide}
+        className="routineModalContainer"
+        overlay
+      >
+        No Data
+      </Modal>
+    );
+  }
   return (
-    <Modal show={open} onHide={handleHide} className="routineModalContainer" overlay>
+    <Modal
+      show={open}
+      onHide={handleHide}
+      className="routineModalContainer"
+      overlay
+    >
       <Modal.Header>
         <Modal.Title as="h3">My Modal heading</Modal.Title>
       </Modal.Header>
@@ -29,7 +47,9 @@ const RoutineDetails = ({currentRoutine, open, setOpen }) => {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleHide}>Close</Button>
+        <Button variant="secondary" onClick={handleHide}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );
