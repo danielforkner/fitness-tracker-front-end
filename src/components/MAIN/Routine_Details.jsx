@@ -1,8 +1,14 @@
+import { Dropdown } from 'bootstrap';
 import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import useAuth from '../hooks/useAuth';
 
 const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
   const { activities } = currentRoutine;
+  const { user } = useAuth();
+  const [addActivity, setAddActivity] = useState(false);
+  const [count, setCount] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const handleHide = () => {
     setOpen(false);
@@ -24,7 +30,7 @@ const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
       <Modal.Body className="routineModalBody">
         <div>
           <div>{currentRoutine.goal}</div>
-          <div>{currentRoutine.creatorName}</div>
+          <div>{`${currentRoutine.creatorName}`}</div>
           <div>
             {activities.map((elem) => {
               return (
@@ -34,6 +40,42 @@ const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
               );
             })}
           </div>
+          {user.username === currentRoutine.creatorName ? (
+            <button
+              onClick={() => {
+                setAddActivity(!addActivity);
+                // get activities
+              }}
+            >
+              ADD ACTIVITY
+            </button>
+          ) : // https://reactjs.org/docs/forms.html#the-select-tag
+          null}
+          {addActivity ? (
+            <form>
+              <select>
+                <option id="defaultOption">Act1</option>
+                <option>Act2</option>
+                <option>Act3</option>
+              </select>
+              <input
+                value={count}
+                onChange={(e) => setCount(e.target.value)}
+              ></input>
+              <input
+                value={duration}
+                onChange={(e) => setDuration(e.target.value)}
+              ></input>
+              <button
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                ADD
+              </button>
+            </form>
+          ) : null}
         </div>
       </Modal.Body>
       <Modal.Footer>
