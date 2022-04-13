@@ -5,13 +5,18 @@ import useAuth from '../hooks/useAuth';
 
 const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
   const { activities } = currentRoutine;
-  const { user } = useAuth();
+  const { user, allActivities } = useAuth();
   const [addActivity, setAddActivity] = useState(false);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [selectedActivity, setSelectedActivity] = useState('');
 
   const handleHide = () => {
     setOpen(false);
+  };
+
+  const handleSubmitAddActivity = async (e) => {
+    e.preventDefault();
   };
 
   // in case fetch fails
@@ -44,7 +49,6 @@ const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
             <button
               onClick={() => {
                 setAddActivity(!addActivity);
-                // get activities
               }}
             >
               ADD ACTIVITY
@@ -53,25 +57,36 @@ const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
           null}
           {addActivity ? (
             <form>
-              <select>
-                <option id="defaultOption">Act1</option>
-                <option>Act2</option>
-                <option>Act3</option>
+              <select
+                value={selectedActivity}
+                onChange={(e) => {
+                  setSelectedActivity(e.target.value);
+                }}
+              >
+                {allActivities.map((activity) => {
+                  return (
+                    <option
+                      value={activity.id}
+                      key={`activityID:${activity.id}`}
+                    >
+                      {`${activity.name}`}
+                    </option>
+                  );
+                })}
               </select>
+              <label htmlFor="count">Count: </label>
               <input
+                name="count"
                 value={count}
                 onChange={(e) => setCount(e.target.value)}
               ></input>
+              <label htmlFor="duration">Duration: </label>
               <input
+                name="duration"
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
               ></input>
-              <button
-                type="submit"
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
+              <button type="submit" onClick={handleSubmitAddActivity}>
                 ADD
               </button>
             </form>
