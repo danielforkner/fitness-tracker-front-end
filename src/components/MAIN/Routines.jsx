@@ -7,7 +7,6 @@ const Routines = ({ setCurentRoutine, setOpen }) => {
 
   const fetchRoutines = async () => {
     const routines = await getRoutines();
-    console.log(routines);
     setPubRoutines(routines);
   };
 

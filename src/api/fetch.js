@@ -68,7 +68,7 @@ export const getRoutines = async () => {
 export const getMyRoutines = async (username) => {
   try {
     const response = await fetch(
-      `${apiURL}/${username}/routines`, {
+      `${apiURL}/users/${username}/routines`, {
         headers: {
           'Content-Type': 'application/json',
         }
