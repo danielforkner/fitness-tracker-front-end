@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
     async function getUser() {
       if (localStorage.getItem('token')) {
         const ME = await myUser(token);
+        // console.log(ME)
         setUser(ME);
       } else {
         setUser({});
@@ -23,7 +24,7 @@ const AuthProvider = ({ children }) => {
     async function getAllActivities() {
       const activities = await getActivities();
       setAllActivities(activities);
-      console.log('ACTIVITIES', activities);
+      // console.log('ACTIVITIES', activities);
     }
     getAllActivities();
   }, []);

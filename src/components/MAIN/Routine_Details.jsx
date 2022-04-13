@@ -1,10 +1,11 @@
 import { Dropdown } from 'bootstrap';
 import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { newRoutineActivityy } from '../../api/fetch'
 import useAuth from '../hooks/useAuth';
 
 const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
-  const { activities } = currentRoutine;
+  const { activities, id : routineId } = currentRoutine;;
   const { user, allActivities } = useAuth();
   const [addActivity, setAddActivity] = useState(false);
   const [count, setCount] = useState(0);
@@ -15,8 +16,13 @@ const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
     setOpen(false);
   };
 
+
+  
+
   const handleSubmitAddActivity = async (e) => {
     e.preventDefault();
+    const result = await newRoutineActivityy(routineId, selectedActivity, count, duration)
+    console.log(result);
   };
 
   // in case fetch fails
