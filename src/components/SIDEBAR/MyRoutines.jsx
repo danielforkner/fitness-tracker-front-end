@@ -27,7 +27,6 @@ const MyRoutines = ({
       if (user.username) {
         const routines = await getMyRoutines(user.username, token);
         setUserRoutines(routines);
-        console.log(routines);
       }
     };
     fetchUserRoutines();

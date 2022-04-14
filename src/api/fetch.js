@@ -73,7 +73,6 @@ export const getMyRoutines = async (username, token) => {
       },
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (e) {
     console.error(e);

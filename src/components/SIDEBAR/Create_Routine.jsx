@@ -6,6 +6,7 @@ import useAuth from '../hooks/useAuth';
 const CreateRoutine = ({
   openCreateRoutine,
   setOpenCreateRoutine,
+  userRoutines,
   setUserRoutines,
 }) => {
   const [goalName, setGoalName] = useState('');
@@ -25,7 +26,8 @@ const CreateRoutine = ({
         true,
         token
       );
-      console.log('CREATE ROUTINE RESPONSE: ', response);
+      userRoutines.push(response);
+      setUserRoutines(userRoutines);
     } catch (error) {
       throw error;
     }
