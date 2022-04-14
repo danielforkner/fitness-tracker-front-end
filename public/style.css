@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
 body {
   width: 100vw;
   height: 100vh;
@@ -66,29 +68,67 @@ body * {
   height: 100vh;
   width: 30%;
   float: left;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 .sideBarContainer * {
   display: flex;
   flex: 1;
-}
-.sideBarContainer h1 {
-  width: 50%;
-  height: 10%;
-  text-align: center;
+  flex-flow: column nowrap;
+ 
 }
 
-#loginBtn {
-  width: auto;
-  height: auto;
+#loginCard {
+  width: 60%;
+  height: 60%;
+}
+#loginCard i {
+  height: 20%;
+  width: 20%;
+  z-index: 69;
+  
+}
+#loginCard i:hover {
+
 }
 
+
+
+
+.topHalfSideBarContainer {
+  height: 20%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+}
 .NavBarCountainer {
-  background-color: brown;
-  font-size: 2rem;
+  height: 100%;
+  width: 30%;
+  align-items: center;
+ 
+}
+.NavBarCountainer * {
+  text-decoration: none;
+}
+.NavIconLink{
+  width: 100%;
+  height: 100%;
+  
+  z-index: 69;
 }
 .NavIcon {
+  min-width: 100%;
+  min-height: 100%;
+  align-items: center;
   color: black;
-  font-size: 5rem;
+  box-shadow: 1px 1px 1px 1px rgba(rgba(0, 0, 0, 0.572));
+  font-size: 2rem;
+}
+
+
+.myRoutinesContainer {
+  min-height: 80%;
 }
 /* SIDE BAR ENDS HERE*/
 

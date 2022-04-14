@@ -19,7 +19,6 @@ const Routines = ({ setCurentRoutine, setOpen }) => {
 
   return (
     <div className="routinesContainer">
-      <h4>Routines Container</h4>
       {pubRoutines.map((routine, i) => {
         return (
           <RoutineCard

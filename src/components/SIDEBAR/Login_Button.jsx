@@ -6,8 +6,8 @@ const Login_Button = ({ setOpenLogin }) => {
   };
 
   return (
-    <div id="loginBtn" className="btn btn-primary" onClick={handleClick}>
-      LOGINBUTTOON
+    <div id="loginCard" className="col col-1 card" >
+      <i class="NavIcon bi bi-person-lines-fill" onClick={handleClick}></i>
     </div>
   );
 };
