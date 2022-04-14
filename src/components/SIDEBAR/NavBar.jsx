@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({ setOpenCreateRoutine }) => {
   return (
     <div className="NavBarCountainer nav nav-pills flex-column mb-auto">
       NAVBAR
+      <button onClick={() => setOpenCreateRoutine(true)}>Create Routine</button>
       <Link
         to="/Main"
         data-bs-toggle="tooltip"

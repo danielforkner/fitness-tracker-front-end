@@ -1,6 +1,5 @@
 const apiURL = process.env.REACT_APP_API_URL;
 
-
 // export const name = async () => {
 //   const response = await fetch(`${apiURL}
 //   const data = await response.json();
@@ -16,7 +15,7 @@ export const registerUser = async (username, password) => {
     },
     body: JSON.stringify({
       username: `${username}`,
-      password: `${password}`
+      password: `${password}`,
     }),
   });
   const data = await response.json();
@@ -31,7 +30,7 @@ export const loginUser = async (username, password) => {
     },
     body: JSON.stringify({
       username: `${username}`,
-      password: `${password}`
+      password: `${password}`,
     }),
   });
   const data = await response.json();
@@ -42,7 +41,7 @@ export const myUser = async (token) => {
   const response = await fetch(`${apiURL}/users/me`, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -53,7 +52,7 @@ export const getRoutines = async () => {
   try {
     const response = await fetch(`${apiURL}/routines`, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
     });
 
@@ -70,7 +69,7 @@ export const getMyRoutines = async (username, token) => {
     const response = await fetch(`${apiURL}/users/${username}/routines`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     });
     const data = await response.json();
@@ -87,7 +86,7 @@ export const getActivities = async () => {
   try {
     const response = await fetch(`${apiURL}/activities`, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
     });
     const data = await response.json();
@@ -105,7 +104,7 @@ export const postActivity = async () => {
       method: 'POST',
       body: JSON.stringify({
         name: 'Running',
-        description: 'Keep on running!'
+        description: 'Keep on running!',
       }),
     });
     const data = await response.json();
@@ -122,7 +121,7 @@ export const usersRoutines = async (username) => {
   try {
     const response = fetch(`${apiURL}/users/${username}/routines`, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
     });
     const data = await response.json();
@@ -138,7 +137,7 @@ export const pubRoutinesWithActivity = async (activityID) => {
   try {
     const response = fetch(`${apiURL}/activities/${activityID}/routines`, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
     });
     const data = await response.json();
@@ -149,14 +148,18 @@ export const pubRoutinesWithActivity = async (activityID) => {
   }
 };
 //----------------------------------------------------------------
-export const createRoutine = async (name, goal, isPublic) => {
+export const createRoutine = async (name, goal, isPublic, token) => {
   try {
     const response = await fetch(`${apiURL}/routines`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({
         name: `${name}`,
         goal: `${goal}`,
-        isPublic: `${isPublic}`
+        isPublic: `${isPublic}`,
       }),
     });
     const data = await response.json();
@@ -173,7 +176,7 @@ export const editRoutine = async (id, name, goal) => {
       method: 'PATCH',
       body: JSON.stringify({
         name: `${name}`,
-        goal: `${goal}`
+        goal: `${goal}`,
       }),
     });
     const data = await response.json();
@@ -191,7 +194,7 @@ export const deleteRoutine = async (id, token) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     });
     const data = await response.json();
@@ -203,28 +206,32 @@ export const deleteRoutine = async (id, token) => {
 };
 
 //----------------------------------------------------------------
-export const newRoutineActivityy = async (routineId, inpActivityId, inpCount, inpDuration) => {
- 
+export const newRoutineActivityy = async (
+  routineId,
+  inpActivityId,
+  inpCount,
+  inpDuration
+) => {
   try {
     const response = await fetch(`${apiURL}/routines/${routineId}/activities`, {
       method: 'POST',
       headers: {
-      'Content-Type': 'application/json'},
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
-      activityId: +inpActivityId,
+        activityId: +inpActivityId,
         count: +inpCount,
-        duration: +inpDuration
+        duration: +inpDuration,
       }),
     });
     const data = await response.json();
-    console.log(data, "data")
+    console.log(data, 'data');
     return data;
   } catch (e) {
     console.error(e);
     throw e;
   }
 };
-
 
 //----------------------------------------------------------------
 export const editRoutineActivity = async (id, count, duration) => {
@@ -233,14 +240,14 @@ export const editRoutineActivity = async (id, count, duration) => {
       method: 'PATCH',
       body: JSON.stringify({
         count: +count,
-        duration: +duration
+        duration: +duration,
       }),
     });
-    
+
     const data = await response.json();
     return data;
   } catch (e) {
-    console.error(e,);
+    console.error(e);
     throw e;
   }
 };
@@ -253,7 +260,7 @@ export const deleteRoutineActivity = async (id, token) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     });
     const data = await response.json();
