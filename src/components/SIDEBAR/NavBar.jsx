@@ -1,9 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
-const NavBar = () => {
+const NavBar = ({ setOpenCreateRoutine }) => {
+  const { user } = useAuth();
+
   return (
+
     <div className="NavBarCountainer nav nav-pills flex-column mb-auto col col-2">
+
+      NAVBAR
+      {user.username ? (
+        <button onClick={() => setOpenCreateRoutine(true)}>
+          Create Routine
+        </button>
+      ) : null}
       <Link
         to="/Main"
         data-bs-toggle="tooltip"
