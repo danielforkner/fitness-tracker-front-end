@@ -20,11 +20,9 @@ const Main = ({ curentRoutine, setCurentRoutine, open, setOpen }) => {
             <Routines setCurentRoutine={setCurentRoutine} setOpen={setOpen} />
           }
         ></Route>
+
         <Route path="/Activities" element={<Activities />}></Route>
-        {/* <Route
-          path="/Routine_Details/"
-          element={<RoutineDetails currentRoutine={curentRoutine} />}
-        ></Route> */}
+
       </Routes>
       {open && (
         <RoutineDetails
