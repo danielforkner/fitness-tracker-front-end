@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
     async function getUser() {
       if (localStorage.getItem('token')) {
         const ME = await myUser(token);
+        // console.log(ME)
         setUser(ME);
       } else {
         setUser({});
