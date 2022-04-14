@@ -71,7 +71,9 @@ const RoutineDetails = ({
             {activities.map((activity) => {
               return (
                 <div className="activityCard" key={activity.id}>
-                  {`${activity.name}, Count: ${activity.count} Duration: ${activity.duration}`}
+                  <h4>{`${activity.name}`}</h4>
+                  <p>{activity.description}</p>
+                  <p>{`Count: ${activity.count} Duration: ${activity.duration}`}</p>
                   {ourRoutine ? (
                     <div
                       className="deleteActivityBtn"
