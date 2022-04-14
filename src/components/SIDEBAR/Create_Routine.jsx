@@ -11,6 +11,7 @@ const CreateRoutine = ({
 }) => {
   const [goalName, setGoalName] = useState('');
   const [goalDescription, setGoalDescription] = useState('');
+  const [isPublic, setIsPublic] = useState(true);
   const { token } = useAuth();
 
   const handleHide = () => {
@@ -23,16 +24,18 @@ const CreateRoutine = ({
       const response = await createRoutine(
         goalName,
         goalDescription,
-        true,
+        isPublic,
         token
       );
       userRoutines.push(response);
       setUserRoutines(userRoutines);
     } catch (error) {
       throw error;
+    } finally {
+      setGoalName('');
+      setGoalDescription('');
+      setOpenCreateRoutine(false);
     }
-    setGoalName('');
-    setGoalDescription('');
   };
 
   return (
