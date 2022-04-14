@@ -14,12 +14,10 @@ const Login_Button = ({ setOpenLogin }) => {
   };
 
   return (
-    <div id="loginCard" className="col col-1 card" >
-      <i class="NavIcon bi bi-person-lines-fill" onClick={handleClick}></i>
-/* CHECK THIS MERGE
-    <div className="logoutButton">
+    <div id="loginCard" className="col col-1 card">
+      <i className="NavIcon bi bi-person-lines-fill"></i>
       {user.username ? (
-        <div id="logOutBtn" className="btn btn-primary" onClick={logOut}>
+        <div id="logOutBtn" className="btn btn-primary">
           LOG OUT
         </div>
       ) : (
@@ -27,7 +25,6 @@ const Login_Button = ({ setOpenLogin }) => {
           LOG IN
         </div>
       )}
- */
     </div>
   );
 };
