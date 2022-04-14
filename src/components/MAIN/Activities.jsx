@@ -8,6 +8,7 @@ const Activities = () => {
   const { allActivities } = useAuth();
   return (
     <div className="activitiesContainer">
+
       <h4>Activities Container</h4>
       <button
         className="btn btn-secondary"
@@ -15,6 +16,7 @@ const Activities = () => {
       >
         Add New Activity
       </button>
+
       {allActivities.map((activity, i) => {
         return <ActivityCard activity={activity} key={`activity:${i}`} />;
       })}

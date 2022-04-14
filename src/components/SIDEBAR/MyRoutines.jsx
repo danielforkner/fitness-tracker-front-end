@@ -39,7 +39,7 @@ const MyRoutines = ({
           {userRoutines.map((routine, i) => {
             return (
               <div
-                className="routineCard card text-center"
+                className="myRoutineCard card text-center"
                 key={`MyRoutine:${i}`}
               >
                 <h4 className="ftHeader card-title">RoutineImage goes here</h4>

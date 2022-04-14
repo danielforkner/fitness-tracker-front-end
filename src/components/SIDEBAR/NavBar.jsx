@@ -17,7 +17,7 @@ const NavBar = ({ setOpenCreateRoutine }) => {
           className="navIconLink"
           onClick={() => setOpenCreateRoutine(true)}
         >
-          <i className="NavIcon bi bi-node-plus"></i>
+          <i className="NavIcon ftIcon bi bi-node-plus"></i>
         </Link>
       ) : null}
       <Link
@@ -27,7 +27,7 @@ const NavBar = ({ setOpenCreateRoutine }) => {
         title="Main2"
         onClick={() => setIsActivities(false)}
       >
-        <i className="NavIcon bi bi-grid-1x2-fill"></i>
+        <i className="NavIcon ftIcon bi bi-grid-1x2-fill"></i>
       </Link>
       <Link
         to="/activities"
@@ -36,7 +36,7 @@ const NavBar = ({ setOpenCreateRoutine }) => {
         title="aAtivities"
         onClick={() => setIsActivities(true)}
       >
-        <i className="NavIcon bi bi-fullscreen"></i>
+        <i className="NavIcon ftIcon bi bi-fullscreen"></i>
       </Link>
     </div>
   );
