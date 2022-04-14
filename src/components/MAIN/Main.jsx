@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Routines from './Routines';
 import RoutineDetails from './Routine_Details';
+
 import { Routes, Route } from 'react-router-dom';
 
-const Main = ({curentRoutine, setCurentRoutine, open, setOpen}) => {
- 
+const Main = ({ curentRoutine, setCurentRoutine, open, setOpen }) => {
   return (
     <div className="main">
       <Routes>

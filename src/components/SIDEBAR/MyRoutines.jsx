@@ -4,10 +4,17 @@ import useAuth from '../hooks/useAuth';
 import { getMyRoutines } from '../../api/fetch';
 
 //----------------------------------------------------------------
-const MyRoutines = ({ curentRoutine, setCurentRoutine, open, setOpen }) => {
+const MyRoutines = ({
+  userRoutines,
+  setUserRoutines,
+  curentRoutine,
+  setCurentRoutine,
+  open,
+  setOpen,
+}) => {
   //--------------------------------------------------------------------------------------------------------------------------------
   const { user, token } = useAuth();
-  const [userRoutines, setUserRoutines] = useState([{}]);
+
   //--------------------------------------------------------------------------------------------------------------------------------
   const handleClick = (routine) => {
     // ??? handle
@@ -20,7 +27,6 @@ const MyRoutines = ({ curentRoutine, setCurentRoutine, open, setOpen }) => {
       if (user.username) {
         const routines = await getMyRoutines(user.username, token);
         setUserRoutines(routines);
-        console.log(routines)
       }
     };
     fetchUserRoutines();
