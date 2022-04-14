@@ -12,9 +12,8 @@ const SideBar = ({ curentRoutine, setCurentRoutine, open, setOpen }) => {
   const [openCreateRoutine, setOpenCreateRoutine] = useState(false);
   const [userRoutines, setUserRoutines] = useState([{}]);
   return (
-    <div className="sideBarContainer d-flex flex-column flex-shrink-0 p-3 bg-light">
+    <div className="sideBarContainer d-flex flex-column flex-shrink-0 p-3 ">
       <div className="topHalfSideBarContainer">
-        <h1>{user.username ? `Hello, ${user.username}` : 'Please Log In'}</h1>
         <LoginButton openLogin={openLogin} setOpenLogin={setOpenLogin} />
         <NavBar
           openCreateRoutine={openCreateRoutine}

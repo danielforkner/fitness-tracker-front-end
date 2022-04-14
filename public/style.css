@@ -7,10 +7,12 @@ body {
   padding: 0;
   box-sizing: border-box;
   display: flex;
+  
 }
 body * {
   width: 100%;
   box-sizing: border-box;
+  background-color: gray;
 }
 
 /* MAIN */
@@ -18,7 +20,6 @@ body * {
   width: 70%;
   height: 100vh;
   float: right;
-  border: 1px solid black;
   align-items: center;
   overflow-y: scroll;
 }
@@ -42,7 +43,6 @@ body * {
 
 .routinesContainer,
 .activitiesContainer {
-  border: 1px solid gray;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -51,11 +51,12 @@ body * {
 
 .routineCard {
   border: 1px solid blue;
+  background-color: gray;
 }
 .routineCard:hover {
   cursor: pointer;
   border: 1px solid blue;
-  background-color: lightgreen;
+
 }
 
 .routineModalBody {
@@ -83,6 +84,9 @@ body * {
   width: 60%;
   height: 60%;
 }
+.loginHeader {
+  font-size: 1rem;
+}
 #loginCard i {
   height: 20%;
   width: 20%;
@@ -90,7 +94,7 @@ body * {
   
 }
 #loginCard i:hover {
-
+ border: 1 px solid beige
 }
 
 
@@ -130,6 +134,7 @@ body * {
 
 .myRoutinesContainer {
   min-height: 80%;
+  overflow-y: scroll;
 }
 /* SIDE BAR ENDS HERE*/
 
