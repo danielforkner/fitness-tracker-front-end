@@ -11,13 +11,14 @@ const RoutineDetails = ({
   setOpen,
 }) => {
   const { activities, id: routineId } = currentRoutine;
-  const { user, allActivities } = useAuth();
+  const { user, allActivities, token } = useAuth();
   const [addActivity, setAddActivity] = useState(false);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
   const [selectedActivity, setSelectedActivity] = useState('');
   const [ourRoutine, setOurRoutine] = useState(false);
 
+  // if user created the routine, render specific elements
   useEffect(() => {
     if (user.username === currentRoutine.creatorName) {
       setOurRoutine(true);
@@ -39,10 +40,14 @@ const RoutineDetails = ({
   };
 
   const deleteActivity = async (activity) => {
-    const response = await deleteRoutineActivity();
+    const response = await deleteRoutineActivity(
+      activity.routineActivityId,
+      token
+    );
+    console.log(response);
   };
 
-  // in case fetch fails
+  // in case fetch routines fails
   if (!currentRoutine.activities) {
     return (
       <Modal show={open} onHide={handleHide} className="routineModalContainer">
@@ -66,11 +71,13 @@ const RoutineDetails = ({
             {activities.map((activity) => {
               return (
                 <div className="activityCard" key={activity.id}>
-                  {`${activity.name}, Count: ${activity.count} Duration: ${activity.duration}`}
+                  <h4>{`${activity.name}`}</h4>
+                  <p>{activity.description}</p>
+                  <p>{`Count: ${activity.count} Duration: ${activity.duration}`}</p>
                   {ourRoutine ? (
                     <div
                       className="deleteActivityBtn"
-                      onClick={() => deleteActivity()}
+                      onClick={() => deleteActivity(activity)}
                     >
                       DELETE
                     </div>
