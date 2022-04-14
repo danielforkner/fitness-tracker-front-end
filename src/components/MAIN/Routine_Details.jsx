@@ -1,28 +1,45 @@
 import { Dropdown } from 'bootstrap';
 import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { newRoutineActivityy } from '../../api/fetch'
+import { newRoutineActivityy, deleteRoutineActivity } from '../../api/fetch';
 import useAuth from '../hooks/useAuth';
 
-const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
-  const { activities, id : routineId } = currentRoutine;;
+const RoutineDetails = ({
+  setCurrentRoutine,
+  currentRoutine,
+  open,
+  setOpen,
+}) => {
+  const { activities, id: routineId } = currentRoutine;
   const { user, allActivities } = useAuth();
   const [addActivity, setAddActivity] = useState(false);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
   const [selectedActivity, setSelectedActivity] = useState('');
+  const [ourRoutine, setOurRoutine] = useState(false);
+
+  useEffect(() => {
+    if (user.username === currentRoutine.creatorName) {
+      setOurRoutine(true);
+    }
+  }, []);
 
   const handleHide = () => {
     setOpen(false);
   };
 
-
-  
-
   const handleSubmitAddActivity = async (e) => {
     e.preventDefault();
-    const result = await newRoutineActivityy(routineId, selectedActivity, count, duration)
-    console.log(result);
+    const result = await newRoutineActivityy(
+      routineId,
+      selectedActivity,
+      count,
+      duration
+    );
+  };
+
+  const deleteActivity = async (activity) => {
+    const response = await deleteRoutineActivity();
   };
 
   // in case fetch fails
@@ -37,21 +54,32 @@ const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
     <Modal show={open} onHide={handleHide} className="routineModalContainer">
       <Modal.Header>
         <Modal.Title as="h3">{currentRoutine.name}</Modal.Title>
+        <p>
+          <em>{`By ${currentRoutine.creatorName}`}</em>
+        </p>
       </Modal.Header>
       <Modal.Body className="routineModalBody">
         <div>
           <div>{currentRoutine.goal}</div>
-          <div>{`${currentRoutine.creatorName}`}</div>
           <div>
-            {activities.map((elem) => {
+            {activities.length > 0 ? `Activities:` : 'No Activities'}
+            {activities.map((activity) => {
               return (
-                <div
-                  key={elem.id}
-                >{`${elem.name}, ${elem.count}, ${elem.duration}`}</div>
+                <div className="activityCard" key={activity.id}>
+                  {`${activity.name}, Count: ${activity.count} Duration: ${activity.duration}`}
+                  {ourRoutine ? (
+                    <div
+                      className="deleteActivityBtn"
+                      onClick={() => deleteActivity()}
+                    >
+                      DELETE
+                    </div>
+                  ) : null}
+                </div>
               );
             })}
           </div>
-          {user.username === currentRoutine.creatorName ? (
+          {ourRoutine ? (
             <button
               onClick={() => {
                 setAddActivity(!addActivity);
@@ -63,7 +91,9 @@ const RoutineDetails = ({ currentRoutine, open, setOpen }) => {
           null}
           {addActivity ? (
             <form>
+              <label htmlFor="activities">Activity Name: </label>
               <select
+                name="activities"
                 value={selectedActivity}
                 onChange={(e) => {
                   setSelectedActivity(e.target.value);
@@ -120,8 +150,8 @@ export default RoutineDetails;
 // <div>{currentRoutine.goal}</div>
 // <div>{currentRoutine.creatorName}</div>
 // <div>
-//   {activities.map((elem, i) => {
-//     return <div>{`${elem.name}, ${elem.count}, ${elem.duration}`}</div>;
+//   {activities.map((activity, i) => {
+//     return <div>{`${activity.name}, ${activity.count}, ${activity.duration}`}</div>;
 //   })}
 // </div>
 // <Link to="/Routines">Go Back</Link>
