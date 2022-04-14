@@ -97,13 +97,17 @@ export const getActivities = async () => {
 };
 
 //----------------------------------------------------------------
-export const postActivity = async () => {
+export const postActivity = async (name, description, token) => {
   try {
     const response = await fetch(`${apiURL}/activities`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({
-        name: 'Running',
-        description: 'Keep on running!',
+        name,
+        description,
       }),
     });
     const data = await response.json();
