@@ -45,14 +45,15 @@ const CreateRoutine = ({
       className="createRoutine ModalContainer"
     >
       <Modal.Header>
-        <Modal.Title as="h3">Create New Routine</Modal.Title>
+        <Modal.Title as="h3" className="ftHeader">Create New Routine</Modal.Title>
       </Modal.Header>
-      <Modal.Body className="createRoutine ModalBody">
+      <Modal.Body className="createRoutine ftHeader ModalBody">
         <form>
           <label htmlFor="name">Goal Name: </label>
           <input
             type="text"
             name="name"
+            className="ftHeader"
             placeholder="Ready for Summer...."
             value={goalName}
             onChange={(e) => setGoalName(e.target.value)}
@@ -61,18 +62,19 @@ const CreateRoutine = ({
           <input
             type="text"
             name="description"
+            className="ftHeader"
             placeholder="Combination of cardio and strength"
             value={goalDescription}
             onChange={(e) => setGoalDescription(e.target.value)}
           />
 
-          <Button style={{ margin: '10px 0' }} onClick={handleSubmit}>
+          <Button variant="btn btn-outline-secondary" onClick={handleSubmit}>
             Post your Routine!
           </Button>
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleHide}>
+        <Button variant="btn btn-outline-secondary" onClick={handleHide}>
           Close
         </Button>
       </Modal.Footer>

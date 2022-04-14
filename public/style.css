@@ -19,17 +19,24 @@
 .activitiesContainer {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 5px;
-}
-
-.routineCard {
 
 }
+.routineCard, .activityCard {
+  width: 90%;
+  padding: 2%;
+  margin: 2%;
+  align-items: center;
+
+
+}
+
 .routineCard:hover {
-  cursor: pointer;
-
-  border: 1px solid #F7F2F8;
+  border: .2px solid #413b43;
+  box-shadow: .1px .1px 6px #b79fb7;
+}
+.activityCard:hover{
+  border: .2px solid #413b43;
+  box-shadow: .1px .1px 6px #b79fb7;
 }
 
 .routineModalBody {
@@ -37,35 +44,11 @@
   flex-direction: column;
 }
 
-.activityCard { border: 1px solid black}
+
 .deleteActivityBtn:hover { background-color: red }
 /* ROUTINES ENDS HERE*/
 
 /* SIDE BAR STARTS HERE*/
-
-#loginCard {
-  width: 60%;
-  height: 60%;
-}
-.loginHeader {
-  font-size: 1rem;
-}
-#loginCard i {
-  height: 20%;
-  width: 20%;
-  z-index: 69;
-}
-#loginCard i:hover {
-  border: 1 px solid beige;
-}
-
-.topHalfSideBarContainer {
-  height: 20%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  flex-flow: row nowrap;
-}
 .NavBarCountainer {
   height: 100%;
   width: 30%;
@@ -74,6 +57,36 @@
 .NavBarCountainer * {
   text-decoration: none;
 }
+.topHalfSideBarContainer {
+  height: 20%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+}
+#loginCard {
+  width: 60%; 
+  margin: 10%;
+  height: 80%;
+  padding: 8%;
+  align-items: center;
+  justify-content: center;
+}
+.loginHeader {
+  font-size: 1.5rem;
+  align-items: center;
+}
+#loginCard i {
+  height: 100%;
+  width: 50%;
+  z-index: 69;
+}
+#loginCard i:hover {
+  border: 1 px solid beige;
+}
+
+
+
 .NavIconLink {
   width: 100%;
   height: 100%;
@@ -81,18 +94,33 @@
   z-index: 69;
 }
 .NavIcon {
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   align-items: center;
   color: #F7F2F8;
   box-shadow: 1px 1px 1px 1px rgba(rgba(0, 0, 0, 0.572));
   font-size: 2rem;
+  text-shadow: .1px .1px 2px #b79fb7;
+}
+
+.NavIcon:hover{
+  text-shadow: .1px .1px 6px #b79fb7;
 }
 
 .myRoutinesContainer {
   min-height: 80%;
   overflow-y: scroll;
   scrollbar-width: thin;
+}
+.myRoutineCard {
+  width: 90%;
+   margin: 3%;
+   padding: 3%;
+   align-items: center;
+  }
+.myRoutineCard:hover {
+  border: .2px solid #413b43;
+  box-shadow: .1px .1px 6px #b79fb7;
 }
 /* SIDE BAR ENDS HERE*/
 

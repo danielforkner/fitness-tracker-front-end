@@ -53,12 +53,12 @@ const RoutineDetails = ({
   return (
     <Modal show={open} onHide={handleHide} className="routineModalContainer">
       <Modal.Header>
-        <Modal.Title as="h3">{currentRoutine.name}</Modal.Title>
+        <Modal.Title as="h3" className="ftHeader">{currentRoutine.name}</Modal.Title>
         <p>
-          <em>{`By ${currentRoutine.creatorName}`}</em>
+          <em className="ftHeader">{`By ${currentRoutine.creatorName}`}</em>
         </p>
       </Modal.Header>
-      <Modal.Body className="routineModalBody">
+      <Modal.Body className="ftBodyText routineModalBody">
         <div>
           <div>{currentRoutine.goal}</div>
           <div>
@@ -81,6 +81,7 @@ const RoutineDetails = ({
           </div>
           {ourRoutine ? (
             <button
+            className="btn btn-outline-secondary"
               onClick={() => {
                 setAddActivity(!addActivity);
               }}
@@ -122,7 +123,7 @@ const RoutineDetails = ({
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
               ></input>
-              <button type="submit" onClick={handleSubmitAddActivity}>
+              <button type="submit" className="btn btn-outline-secondary" onClick={handleSubmitAddActivity}>
                 ADD
               </button>
             </form>
@@ -130,7 +131,7 @@ const RoutineDetails = ({
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleHide}>
+        <Button variant="btn btn-outline-secondary" onClick={handleHide}>
           Close
         </Button>
       </Modal.Footer>

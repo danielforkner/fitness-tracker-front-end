@@ -41,22 +41,28 @@ body {
    
   }
   .card {
-    background-color: #241825;
+    background-color: #091F1B;
+    border-radius: .6rem;
+    box-shadow: .1px .1px 5px #481754;
   }
+  .card * {background-color: #091F1B}
    /* SideBar Component */
 /* *************** Core Style Definitions ******************************** */
 
-.ftSubBackground {
+.ftSubBG {
     background-color: #280C2F
 }
   .ftHeader {
-    color:#56B39C;
+    color:#8fecd5;
   }
   
   .ftBodyText {
     color: #C7E6DD;
   }
   .ftSubBodyText {
+    color: #F7F2F8;
+  }
+  .ftIcon {
     color: #F7F2F8;
   }
 
