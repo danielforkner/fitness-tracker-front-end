@@ -23,7 +23,6 @@ const AuthProvider = ({ children }) => {
     async function getAllActivities() {
       const activities = await getActivities();
       setAllActivities(activities);
-      console.log('ACTIVITIES', activities);
     }
     getAllActivities();
   }, []);
