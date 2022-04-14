@@ -38,7 +38,8 @@ body * {
 
 /* ROUTINES */
 
-.routinesContainer {
+.routinesContainer,
+.activitiesContainer {
   border: 1px solid gray;
   display: flex;
   flex-direction: column;

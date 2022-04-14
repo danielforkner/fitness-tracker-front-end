@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Routines from './Routines';
 import RoutineDetails from './Routine_Details';
-
+import Activities from './Activities';
 import { Routes, Route } from 'react-router-dom';
 
 const Main = ({ curentRoutine, setCurentRoutine, open, setOpen }) => {
@@ -20,6 +20,7 @@ const Main = ({ curentRoutine, setCurentRoutine, open, setOpen }) => {
             <Routines setCurentRoutine={setCurentRoutine} setOpen={setOpen} />
           }
         ></Route>
+        <Route path="/Activities" element={<Activities />}></Route>
         {/* <Route
           path="/Routine_Details/"
           element={<RoutineDetails currentRoutine={curentRoutine} />}
