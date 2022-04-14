@@ -42,12 +42,12 @@ const MyRoutines = ({
                 className="routineCard card text-center"
                 key={`MyRoutine:${i}`}
               >
-                <h4 className="card-title">RoutineImage goes here</h4>
+                <h4 className="ftHeader card-title">RoutineImage goes here</h4>
                 <div className="card-body">
-                  <p className="card-text">{routine.name}</p>
+                  <p className="ftBodyText card-text">{routine.name}</p>
                   <div
                     onClick={() => handleClick(routine)}
-                    className="btn btn-primary"
+                    className="btn btn-outline-secondary"
                   >
                     See Details
                   </div>

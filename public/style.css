@@ -1,32 +1,7 @@
-@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css');
-
-body {
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  display: flex;
-}
-body * {
-  width: 100%;
-  box-sizing: border-box;
-  background-color: gray;
-}
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+@import "./ftCoreStyle.css";
 
 /* MAIN */
-.main {
-  width: 70%;
-  height: 100vh;
-  float: right;
-  align-items: center;
-  overflow-y: scroll;
-}
-
-.main * {
-  display: flex;
-  flex: 1;
-}
 
 .main button,
 .main h4 {
@@ -49,33 +24,24 @@ body * {
 }
 
 .routineCard {
-  border: 1px solid blue;
-  background-color: gray;
+
 }
 .routineCard:hover {
   cursor: pointer;
-  border: 1px solid blue;
+
+  border: 1px solid #F7F2F8;
 }
 
 .routineModalBody {
   display: flex;
   flex-direction: column;
 }
+
+.activityCard { border: 1px solid black}
+.deleteActivityBtn:hover { background-color: red }
 /* ROUTINES ENDS HERE*/
 
 /* SIDE BAR STARTS HERE*/
-.sideBarContainer {
-  height: 100vh;
-  width: 30%;
-  float: left;
-  flex-flow: column nowrap;
-  align-items: center;
-}
-.sideBarContainer * {
-  display: flex;
-  flex: 1;
-  flex-flow: column nowrap;
-}
 
 #loginCard {
   width: 60%;
@@ -118,7 +84,7 @@ body * {
   min-width: 100%;
   min-height: 100%;
   align-items: center;
-  color: black;
+  color: #F7F2F8;
   box-shadow: 1px 1px 1px 1px rgba(rgba(0, 0, 0, 0.572));
   font-size: 2rem;
 }
@@ -126,6 +92,7 @@ body * {
 .myRoutinesContainer {
   min-height: 80%;
   overflow-y: scroll;
+  scrollbar-width: thin;
 }
 /* SIDE BAR ENDS HERE*/
 

@@ -7,10 +7,10 @@ const RoutineCard = ({ routine, setCurentRoutine, setOpen }) => {
   };
   return (
     <div className="routineCard card text-center">
-      <h4 className="card-title">{routine.name}</h4>
+      <h4 className="ftHeader card-title">{routine.name}</h4>
       <div className="card-body">
-        <p className="card-text">{routine.goal}</p>
-        <div onClick={handleClick} className="btn btn-primary">
+        <p className="ftBodyText card-text">{routine.goal}</p>
+        <div onClick={handleClick} className="btn btn-outline-secondary">
           See Details
         </div>
       </div>
