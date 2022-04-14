@@ -1,0 +1,67 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    
+  }
+  body * {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #241825;
+  }
+  /* Main Component */
+  .main {
+    width: 70%;
+    height: 100vh;
+    float: right;
+    align-items: center;
+    overflow-y: scroll;
+  }
+  
+  .main * {
+    display: flex;
+    flex: 1;
+  }
+  /* Main Component End */
+  /* SideBar Component */
+  .sideBarContainer {
+    height: 100vh;
+    width: 30%;
+    float: left;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  .sideBarContainer * {
+    display: flex;
+    flex: 1;
+    flex-flow: column nowrap;
+   
+  }
+  .card {
+    background-color: #241825;
+  }
+   /* SideBar Component */
+/* *************** Core Style Definitions ******************************** */
+
+.ftSubBackground {
+    background-color: #280C2F
+}
+  .ftHeader {
+    color:#56B39C;
+  }
+  
+  .ftBodyText {
+    color: #C7E6DD;
+  }
+  .ftSubBodyText {
+    color: #F7F2F8;
+  }
+
+  /*  ****Popouts****  */
+  .ftPopout {
+   background-color: #091F1B;
+  }
+  
