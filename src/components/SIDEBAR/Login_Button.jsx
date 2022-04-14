@@ -1,13 +1,29 @@
 import React from 'react';
+import useAuth from '../hooks/useAuth';
 //----------------------------------------------------------------
 const Login_Button = ({ setOpenLogin }) => {
-  const handleClick = () => {
+  const { user, setToken } = useAuth();
+
+  const logIn = () => {
     setOpenLogin(true);
   };
 
+  const logOut = () => {
+    localStorage.removeItem('token');
+    setToken('');
+  };
+
   return (
-    <div id="loginBtn" className="btn btn-primary" onClick={handleClick}>
-      LOGINBUTTOON
+    <div className="logoutButton">
+      {user.username ? (
+        <div id="logOutBtn" className="btn btn-primary" onClick={logOut}>
+          LOG OUT
+        </div>
+      ) : (
+        <div id="loginBtn" className="btn btn-primary" onClick={logIn}>
+          LOG IN
+        </div>
+      )}
     </div>
   );
 };
