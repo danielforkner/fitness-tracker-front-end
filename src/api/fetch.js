@@ -145,7 +145,7 @@ export const editActivity = async (activityId, name, description, token) => {
 
 export const usersRoutines = async (username) => {
   try {
-    const response = fetch(`${apiURL}/users/${username}/routines`, {
+    const response = await fetch(`${apiURL}/users/${username}/routines`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -161,7 +161,7 @@ export const usersRoutines = async (username) => {
 //----------------------------------------------------------------
 export const pubRoutinesWithActivity = async (activityID) => {
   try {
-    const response = fetch(`${apiURL}/activities/${activityID}/routines`, {
+    const response = await fetch(`${apiURL}/activities/${activityID}/routines`, {
       headers: {
         'Content-Type': 'application/json',
       },

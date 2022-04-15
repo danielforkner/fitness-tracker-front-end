@@ -170,3 +170,58 @@
   backdrop-filter: sepia(100%);
   background-color: rgba(136, 89, 123, 0.313), transparent;
 }
+
+.routinesPopOut {
+visibility: visible;
+position: sticky;
+display: inline-block;
+min-height: 100vh;
+min-width:20vw;
+width: 20%;
+color: #F7F2F8;
+box-shadow: -1px .1px 2px #b79fb798;
+}
+.routinesPopOut * {
+  background-color: transparent;
+}
+#offcanvasRight{
+  /* right:unset !important; */
+
+  left: 29.5vw;
+  align-self: unset;
+  justify-self: unset;
+}
+routListOC {
+  flex-flow:column nowrap;
+}
+
+.headerOC{
+  height: 20%;
+}
+.headerOC button {
+ background-color: #F7F2F8;
+ border: 1px solid black;
+ max-width: 20%;
+}
+.bodyOC{
+  height: 80%;
+  flex-flow:column nowrap;
+}
+.bodyOC ul {
+  width: 90%;
+  font-size: 1.5rem;
+  flex-flow:column nowrap;
+  margin: 7% 3% 3% 3%;
+}
+.bodyItemOC {
+  flex-flow: row wrap;
+}
+.buttonListOC{
+  width: 20%;
+  height: 20%;
+}
+.bodyOCHeader {
+  font-size: 1.8rem;
+  font-style: oblique;
+  text-decoration: underline;
+}
