@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
 import { Modal, Button } from 'react-bootstrap';
 import { newRoutineActivityy, deleteRoutineActivity } from '../../api/fetch';
 import useAuth from '../hooks/useAuth';
+import AddRoutineActivityForm from './Activities/AddRoutineActivityForm';
 
 const RoutineDetails = ({
   setCurrentRoutine,
@@ -14,7 +16,7 @@ const RoutineDetails = ({
   const [addActivity, setAddActivity] = useState(false);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [selectedActivity, setSelectedActivity] = useState('');
+  const [selectedActivity, setSelectedActivity] = useState(allActivities[0].id);
   const [ourRoutine, setOurRoutine] = useState(false);
 
   // if user created the routine, render specific elements
@@ -30,12 +32,17 @@ const RoutineDetails = ({
 
   const handleSubmitAddActivity = async (e) => {
     e.preventDefault();
-    const result = await newRoutineActivityy(
+    const response = await newRoutineActivityy(
       routineId,
       selectedActivity,
       count,
       duration
     );
+    if (response.error) {
+      console.error(response.error);
+    } else {
+      setCurrentRoutine(currentRoutine.activities.push(response));
+    }
   };
 
   const deleteActivity = async (activity) => {
@@ -57,7 +64,9 @@ const RoutineDetails = ({
   return (
     <Modal show={open} onHide={handleHide} className="routineModalContainer">
       <Modal.Header>
-        <Modal.Title as="h3" className="ftHeader">{currentRoutine.name}</Modal.Title>
+        <Modal.Title as="h3" className="ftHeader">
+          {currentRoutine.name}
+        </Modal.Title>
         <p>
           <em className="ftHeader">{`By ${currentRoutine.creatorName}`}</em>
         </p>
@@ -87,7 +96,7 @@ const RoutineDetails = ({
           </div>
           {ourRoutine ? (
             <button
-            className="btn btn-outline-secondary"
+              className="btn btn-outline-secondary"
               onClick={() => {
                 setAddActivity(!addActivity);
               }}
@@ -97,46 +106,17 @@ const RoutineDetails = ({
           ) : // https://reactjs.org/docs/forms.html#the-select-tag
           null}
           {addActivity ? (
-            <form className="form-horizontal">
-              <label htmlFor="activities">Activity Name: </label>
-              <select
-                name="activities"
-                value={selectedActivity}
-                className="ftSubBodyText activDropdown"
-                onChange={(e) => {
-                  setSelectedActivity(e.target.value);
-                }}
-              >
-                {allActivities.map((activity) => {
-                  return (
-                    <option
-                      value={activity.id}
-                      className="ftBodyText activDropdown-item"
-                      key={`activityID:${activity.id}`}
-                    >
-                      {`${activity.name}`}
-                    </option>
-                  );
-                })}
-              </select>
-              <label htmlFor="count">Count: </label>
-              <input
-                name="count"
-                value={count}
-                className="ftSubBodyText ftInputBG ftInput"
-                onChange={(e) => setCount(e.target.value)}
-              ></input>
-              <label htmlFor="duration">Duration: </label>
-              <input
-                name="duration"
-                value={duration}
-                className="ftSubBodyText ftInputBG ftInput"
-                onChange={(e) => setDuration(e.target.value)}
-              ></input>
-              <button type="submit" className="btn btn-outline-secondary" onClick={handleSubmitAddActivity}>
-                ADD
-              </button>
-            </form>
+            <AddRoutineActivityForm
+              setCount={setCount}
+              setDuration={setDuration}
+              count={count}
+              duration={duration}
+              allActivities={allActivities}
+              selectedActivity={selectedActivity}
+              setSelectedActivity={setSelectedActivity}
+              handleSubmitAddActivity={handleSubmitAddActivity}
+            />
+
           ) : null}
         </div>
       </Modal.Body>

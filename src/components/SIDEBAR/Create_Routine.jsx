@@ -45,7 +45,9 @@ const CreateRoutine = ({
       className="createRoutine ModalContainer"
     >
       <Modal.Header>
-        <Modal.Title as="h3" className="ftHeader">Create New Routine</Modal.Title>
+        <Modal.Title as="h3" className="ftHeader">
+          Create New Routine
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body className="createRoutine ftHeader ModalBody">
         <form>
