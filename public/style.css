@@ -138,11 +138,8 @@
   background-color: transparent;
   align-items: center;
   justify-content: center;
-  margin: 1px;
- 
-  
-
-}
+  margin: .1%;
+ }
 .modal-content {
   height: 100%;
   max-width: 100%;
@@ -157,4 +154,19 @@
 }
 .modal-footer {
   height: 10%;
+}
+
+
+
+.activDropdown  {
+  max-width: 80%;
+  margin: 1%;
+  padding: 2%;
+  border-radius: .5rem;
+ 
+}
+.activDropdown-item {
+
+  backdrop-filter: sepia(100%);
+  background-color: rgba(136, 89, 123, 0.313), transparent;
 }

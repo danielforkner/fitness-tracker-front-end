@@ -70,4 +70,15 @@ body {
   .ftPopout {
    background-color: #091F1B;
   }
+
+  /* ***Fields*** */
+  .ftInput{
+    margin: 2%;
+    padding: .7% .7% .7% 1%;
+    max-width: 60%;
+    border-radius: .5rem;
+  }
+  .ftInputBG {
+    background-color: #cec4d0;
+  }
   

@@ -27,7 +27,7 @@ const ActivityCard = ({ activity }) => {
         <p className="ftBodyText card-text">{`Description: ${currentActivity.description}`}</p>
         {user.username ? (
           <button
-            className="btn btn-primary"
+            className="FtIcon btn btn-outline-secondary"
             onClick={() => setIsEditActivity(!isEditActivity)}
           >
             EDIT ACTIVITY

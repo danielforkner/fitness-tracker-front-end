@@ -1,5 +1,4 @@
-import { Dropdown } from 'bootstrap';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { newRoutineActivityy, deleteRoutineActivity } from '../../api/fetch';
 import useAuth from '../hooks/useAuth';
@@ -98,11 +97,12 @@ const RoutineDetails = ({
           ) : // https://reactjs.org/docs/forms.html#the-select-tag
           null}
           {addActivity ? (
-            <form>
+            <form className="form-horizontal">
               <label htmlFor="activities">Activity Name: </label>
               <select
                 name="activities"
                 value={selectedActivity}
+                className="ftSubBodyText activDropdown"
                 onChange={(e) => {
                   setSelectedActivity(e.target.value);
                 }}
@@ -111,6 +111,7 @@ const RoutineDetails = ({
                   return (
                     <option
                       value={activity.id}
+                      className="ftBodyText activDropdown-item"
                       key={`activityID:${activity.id}`}
                     >
                       {`${activity.name}`}
@@ -122,12 +123,14 @@ const RoutineDetails = ({
               <input
                 name="count"
                 value={count}
+                className="ftSubBodyText ftInputBG ftInput"
                 onChange={(e) => setCount(e.target.value)}
               ></input>
               <label htmlFor="duration">Duration: </label>
               <input
                 name="duration"
                 value={duration}
+                className="ftSubBodyText ftInputBG ftInput"
                 onChange={(e) => setDuration(e.target.value)}
               ></input>
               <button type="submit" className="btn btn-outline-secondary" onClick={handleSubmitAddActivity}>
