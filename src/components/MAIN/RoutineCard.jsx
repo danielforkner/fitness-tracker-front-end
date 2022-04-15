@@ -38,7 +38,7 @@ const RoutineCard = ({
             ? 'See Activities / Edit'
             : 'See Activities'}
         </div>
-        {user.username ? (
+        {user.username === routine.creatorName ? (
           <div onClick={handleDelete} className="btn btn-outline-primary">
             Delete Routine
           </div>
