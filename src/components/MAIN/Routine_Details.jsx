@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { newRoutineActivityy, deleteRoutineActivity } from '../../api/fetch';
 import useAuth from '../hooks/useAuth';
+import AddRoutineActivityForm from './Activities/AddRoutineActivityForm';
 
 const RoutineDetails = ({
   setCurrentRoutine,
@@ -58,7 +59,9 @@ const RoutineDetails = ({
   return (
     <Modal show={open} onHide={handleHide} className="routineModalContainer">
       <Modal.Header>
-        <Modal.Title as="h3" className="ftHeader">{currentRoutine.name}</Modal.Title>
+        <Modal.Title as="h3" className="ftHeader">
+          {currentRoutine.name}
+        </Modal.Title>
         <p>
           <em className="ftHeader">{`By ${currentRoutine.creatorName}`}</em>
         </p>
@@ -88,7 +91,7 @@ const RoutineDetails = ({
           </div>
           {ourRoutine ? (
             <button
-            className="btn btn-outline-secondary"
+              className="btn btn-outline-secondary"
               onClick={() => {
                 setAddActivity(!addActivity);
               }}
@@ -98,42 +101,16 @@ const RoutineDetails = ({
           ) : // https://reactjs.org/docs/forms.html#the-select-tag
           null}
           {addActivity ? (
-            <form>
-              <label htmlFor="activities">Activity Name: </label>
-              <select
-                name="activities"
-                value={selectedActivity}
-                onChange={(e) => {
-                  setSelectedActivity(e.target.value);
-                }}
-              >
-                {allActivities.map((activity) => {
-                  return (
-                    <option
-                      value={activity.id}
-                      key={`activityID:${activity.id}`}
-                    >
-                      {`${activity.name}`}
-                    </option>
-                  );
-                })}
-              </select>
-              <label htmlFor="count">Count: </label>
-              <input
-                name="count"
-                value={count}
-                onChange={(e) => setCount(e.target.value)}
-              ></input>
-              <label htmlFor="duration">Duration: </label>
-              <input
-                name="duration"
-                value={duration}
-                onChange={(e) => setDuration(e.target.value)}
-              ></input>
-              <button type="submit" className="btn btn-outline-secondary" onClick={handleSubmitAddActivity}>
-                ADD
-              </button>
-            </form>
+            <AddRoutineActivityForm
+              setCount={setCount}
+              setDuration={setDuration}
+              count={count}
+              duration={duration}
+              allActivities={allActivities}
+              selectedActivity={selectedActivity}
+              setSelectedActivity={setSelectedActivity}
+              handleSubmitAddActivity={handleSubmitAddActivity}
+            />
           ) : null}
         </div>
       </Modal.Body>

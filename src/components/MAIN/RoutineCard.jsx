@@ -16,7 +16,6 @@ const RoutineCard = ({
   };
   const handleDelete = async () => {
     const response = await deleteRoutine(routine.id, token);
-    console.log(response, 'DELETE RESPONSE');
     if (response.error) {
       // show error to user
     } else {
@@ -35,7 +34,9 @@ const RoutineCard = ({
       <div className="card-body">
         <p className="ftBodyText card-text">{routine.goal}</p>
         <div onClick={handleClick} className="btn btn-outline-secondary">
-          See Activities
+          {user.username === routine.creatorName
+            ? 'See Activities / Edit'
+            : 'See Activities'}
         </div>
         {user.username ? (
           <div onClick={handleDelete} className="btn btn-outline-primary">
