@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { newRoutineActivityy, deleteRoutineActivity } from '../../api/fetch';
 import useAuth from '../hooks/useAuth';
+import { getMyRoutines } from '../../api/fetch';
 import AddRoutineActivityForm from './Activities/AddRoutineActivityForm';
+import EditRoutineActivityForm from './Activities/EditRoutineActivityForm';
 
 const RoutineDetails = ({
   setCurrentRoutine,
@@ -14,6 +16,7 @@ const RoutineDetails = ({
   const { activities, id: routineId } = currentRoutine;
   const { user, allActivities, token } = useAuth();
   const [addActivity, setAddActivity] = useState(false);
+  const [editActivity, setEditActivity] = useState(false);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
   const [selectedActivity, setSelectedActivity] = useState(allActivities[0].id);
@@ -41,7 +44,18 @@ const RoutineDetails = ({
     if (response.error) {
       console.error(response.error);
     } else {
-      setCurrentRoutine(currentRoutine.activities.push(response));
+      try {
+        const updatedRoutines = await getMyRoutines(user.username, token);
+        setCurrentRoutine(
+          updatedRoutines.filter(
+            (routine) => routine.id === currentRoutine.id
+          )[0]
+        );
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setAddActivity(false);
+      }
     }
   };
 
@@ -50,7 +64,20 @@ const RoutineDetails = ({
       activity.routineActivityId,
       token
     );
-    console.log(response);
+    if (response.error) {
+      console.error(response.error);
+    } else {
+      try {
+        const updatedRoutines = await getMyRoutines(user.username, token);
+        setCurrentRoutine(
+          updatedRoutines.filter(
+            (routine) => routine.id === currentRoutine.id
+          )[0]
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
 
   // in case fetch routines fails
@@ -83,12 +110,31 @@ const RoutineDetails = ({
                   <p>{activity.description}</p>
                   <p>{`Count: ${activity.count} Duration: ${activity.duration}`}</p>
                   {ourRoutine ? (
-                    <div
-                      className="deleteActivityBtn"
-                      onClick={() => deleteActivity(activity)}
-                    >
-                      DELETE
-                    </div>
+                    <>
+                      <div
+                        className="deleteActivityBtn"
+                        onClick={() => deleteActivity(activity)}
+                      >
+                        DELETE
+                      </div>
+                      <div
+                        className="deleteActivityBtn"
+                        onClick={() => {
+                          setEditActivity(!editActivity);
+                        }}
+                      >
+                        EDIT
+                      </div>
+                    </>
+                  ) : null}
+                  {editActivity ? (
+                    <EditRoutineActivityForm
+                      setEditActivity={setEditActivity}
+                      activity={activity}
+                      setCurrentRoutine={setCurrentRoutine}
+                      currentRoutine={currentRoutine}
+                      id={activity.routineActivityId}
+                    />
                   ) : null}
                 </div>
               );
@@ -116,7 +162,6 @@ const RoutineDetails = ({
               setSelectedActivity={setSelectedActivity}
               handleSubmitAddActivity={handleSubmitAddActivity}
             />
-
           ) : null}
         </div>
       </Modal.Body>
