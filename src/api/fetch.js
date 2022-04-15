@@ -260,10 +260,14 @@ export const newRoutineActivityy = async (
 };
 
 //----------------------------------------------------------------
-export const editRoutineActivity = async (id, count, duration) => {
+export const editRoutineActivity = async (id, count, duration, token) => {
   try {
     const response = await fetch(`${apiURL}/routine_activities/${id}`, {
       method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({
         count: +count,
         duration: +duration,
