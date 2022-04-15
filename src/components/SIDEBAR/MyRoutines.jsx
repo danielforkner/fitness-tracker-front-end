@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import { getMyRoutines } from '../../api/fetch';
+import RoutineCard from '../MAIN/RoutineCard';
 
 //----------------------------------------------------------------
 const MyRoutines = ({
@@ -13,15 +13,10 @@ const MyRoutines = ({
   setOpen,
 }) => {
   //--------------------------------------------------------------------------------------------------------------------------------
-  const { user, token } = useAuth();
+  const { user, token, allActivities } = useAuth();
 
   //--------------------------------------------------------------------------------------------------------------------------------
-  const handleClick = (routine) => {
-    // ??? handle
-    setCurentRoutine(routine);
-    setOpen(true);
-  };
-  //----------------------------------------------------------------------------------------------------------------------------------
+
   useEffect(() => {
     const fetchUserRoutines = async () => {
       if (user.username) {
@@ -34,25 +29,20 @@ const MyRoutines = ({
   //--------------------------------------------------------------------------------------------------------------------------------
   return (
     <div className="myRoutinesContainer">
+      <h2 className="ftHeader">MY ROUTINES</h2>
       {user.username ? (
         <>
           {userRoutines.map((routine, i) => {
             return (
-              <div
-                className="myRoutineCard card text-center"
-                key={`MyRoutine:${i}`}
-              >
-                <h4 className="ftHeader card-title">RoutineImage goes here</h4>
-                <div className="card-body">
-                  <p className="ftBodyText card-text">{routine.name}</p>
-                  <div
-                    onClick={() => handleClick(routine)}
-                    className="btn btn-outline-secondary"
-                  >
-                    See Details
-                  </div>
-                </div>
-              </div>
+              <RoutineCard
+                allActivities={allActivities}
+                userRoutines={userRoutines}
+                setUserRoutines={setUserRoutines}
+                key={`myRoutine:${i}`}
+                routine={routine}
+                setCurentRoutine={setCurentRoutine}
+                setOpen={setOpen}
+              />
             );
           })}
         </>
