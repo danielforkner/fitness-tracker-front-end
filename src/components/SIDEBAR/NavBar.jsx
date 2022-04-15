@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 const NavBar = ({ setOpenCreateRoutine }) => {
   const [isActivities, setIsActivities] = useState(false);

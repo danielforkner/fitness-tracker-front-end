@@ -1,9 +1,29 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { deleteRoutine } from '../../api/fetch';
+import useAuth from '../hooks/useAuth';
 
-const RoutineCard = ({ routine, setCurentRoutine, setOpen }) => {
+const RoutineCard = ({
+  routine,
+  setCurrentRoutine,
+  setOpen,
+  userRoutines,
+  setUserRoutines,
+}) => {
+  const { user, token } = useAuth();
   const handleClick = () => {
-    setCurentRoutine(routine);
+    setCurrentRoutine(routine);
     setOpen(true);
+  };
+  const handleDelete = async () => {
+    const response = await deleteRoutine(routine.id, token);
+    if (response.error) {
+      // show error to user
+    } else {
+      const updatedUserRoutines = userRoutines.filter((routine) => {
+        return routine.id !== response.id;
+      });
+      setUserRoutines(updatedUserRoutines);
+    }
   };
   return (
     <div className="routineCard card text-center">
@@ -14,8 +34,15 @@ const RoutineCard = ({ routine, setCurentRoutine, setOpen }) => {
       <div className="card-body">
         <p className="ftBodyText card-text">{routine.goal}</p>
         <div onClick={handleClick} className="btn btn-outline-secondary">
-          See Details
+          {user.username === routine.creatorName
+            ? 'See Activities / Edit'
+            : 'See Activities'}
         </div>
+        {user.username ? (
+          <div onClick={handleDelete} className="btn btn-outline-primary">
+            Delete Routine
+          </div>
+        ) : null}
       </div>
     </div>
   );
