@@ -118,6 +118,29 @@ export const postActivity = async (name, description, token) => {
   }
 };
 
+//------------------------------
+
+export const editActivity = async (activityId, name, description, token) => {
+  try {
+    const response = await fetch(`${apiURL}/activities/${activityId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name,
+        description,
+      }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+};
+
 //----------------------------------------------------------------
 
 export const usersRoutines = async (username) => {
