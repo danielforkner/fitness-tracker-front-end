@@ -6,7 +6,7 @@ import CreateRoutine from './Create_Routine';
 import Login from './Login';
 import useAuth from '../hooks/useAuth';
 
-const SideBar = ({ curentRoutine, setCurentRoutine, open, setOpen }) => {
+const SideBar = ({ currentRoutine, setCurrentRoutine, open, setOpen }) => {
   const { user } = useAuth();
   const [openLogin, setOpenLogin] = useState(false);
   const [openCreateRoutine, setOpenCreateRoutine] = useState(false);
@@ -26,8 +26,8 @@ const SideBar = ({ curentRoutine, setCurentRoutine, open, setOpen }) => {
         userRoutines={userRoutines}
         setUserRoutines={setUserRoutines}
         setOpen={setOpen}
-        setCurentRoutine={setCurentRoutine}
-        curentRoutine={curentRoutine}
+        setCurrentRoutine={setCurrentRoutine}
+        currentRoutine={currentRoutine}
       />
 
       {openLogin && <Login setOpenLogin={setOpenLogin} openLogin={openLogin} />}

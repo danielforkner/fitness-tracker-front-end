@@ -4,14 +4,14 @@ import useAuth from '../hooks/useAuth';
 
 const RoutineCard = ({
   routine,
-  setCurentRoutine,
+  setCurrentRoutine,
   setOpen,
   userRoutines,
   setUserRoutines,
 }) => {
   const { user, token } = useAuth();
   const handleClick = () => {
-    setCurentRoutine(routine);
+    setCurrentRoutine(routine);
     setOpen(true);
   };
   const handleDelete = async () => {

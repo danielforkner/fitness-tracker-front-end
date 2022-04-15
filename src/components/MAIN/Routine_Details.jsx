@@ -1,4 +1,3 @@
-import { Dropdown } from 'bootstrap';
 import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { newRoutineActivityy, deleteRoutineActivity } from '../../api/fetch';
@@ -16,7 +15,7 @@ const RoutineDetails = ({
   const [addActivity, setAddActivity] = useState(false);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [selectedActivity, setSelectedActivity] = useState('');
+  const [selectedActivity, setSelectedActivity] = useState(allActivities[0].id);
   const [ourRoutine, setOurRoutine] = useState(false);
 
   // if user created the routine, render specific elements
@@ -32,12 +31,17 @@ const RoutineDetails = ({
 
   const handleSubmitAddActivity = async (e) => {
     e.preventDefault();
-    const result = await newRoutineActivityy(
+    const response = await newRoutineActivityy(
       routineId,
       selectedActivity,
       count,
       duration
     );
+    if (response.error) {
+      console.error(response.error);
+    } else {
+      setCurrentRoutine(currentRoutine.activities.push(response));
+    }
   };
 
   const deleteActivity = async (activity) => {

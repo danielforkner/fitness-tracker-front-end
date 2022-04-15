@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getRoutines, getActivities } from '../../api/fetch';
 import RoutineCard from './RoutineCard';
 
-const Routines = ({ setCurentRoutine, setOpen }) => {
+const Routines = ({ setCurrentRoutine, setOpen }) => {
   const [pubRoutines, setPubRoutines] = useState([{}]);
   const [allActivities, setAllActivities] = useState([]);
 
@@ -22,10 +22,10 @@ const Routines = ({ setCurentRoutine, setOpen }) => {
       {pubRoutines.map((routine, i) => {
         return (
           <RoutineCard
+            setCurrentRoutine={setCurrentRoutine}
             allActivities={allActivities}
             key={`routine:${i}`}
             routine={routine}
-            setCurentRoutine={setCurentRoutine}
             setOpen={setOpen}
           />
         );

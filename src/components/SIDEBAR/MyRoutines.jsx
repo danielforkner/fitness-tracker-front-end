@@ -7,8 +7,8 @@ import RoutineCard from '../MAIN/RoutineCard';
 const MyRoutines = ({
   userRoutines,
   setUserRoutines,
-  curentRoutine,
-  setCurentRoutine,
+  currentRoutine,
+  setCurrentRoutine,
   open,
   setOpen,
 }) => {
@@ -40,7 +40,7 @@ const MyRoutines = ({
                 setUserRoutines={setUserRoutines}
                 key={`myRoutine:${i}`}
                 routine={routine}
-                setCurentRoutine={setCurentRoutine}
+                setCurrentRoutine={setCurrentRoutine}
                 setOpen={setOpen}
               />
             );

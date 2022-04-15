@@ -4,29 +4,29 @@ import RoutineDetails from './Routine_Details';
 import Activities from './Activities';
 import { Routes, Route } from 'react-router-dom';
 
-const Main = ({ curentRoutine, setCurentRoutine, open, setOpen }) => {
+const Main = ({ currentRoutine, setCurrentRoutine, open, setOpen }) => {
   return (
     <div className="main">
       <Routes>
         <Route
           path="*"
           element={
-            <Routines setCurentRoutine={setCurentRoutine} setOpen={setOpen} />
+            <Routines setCurrentRoutine={setCurrentRoutine} setOpen={setOpen} />
           }
         ></Route>
         <Route
           path="/Routines"
           element={
-            <Routines setCurentRoutine={setCurentRoutine} setOpen={setOpen} />
+            <Routines setCurrentRoutine={setCurrentRoutine} setOpen={setOpen} />
           }
         ></Route>
 
         <Route path="/Activities" element={<Activities />}></Route>
-
       </Routes>
       {open && (
         <RoutineDetails
-          currentRoutine={curentRoutine}
+          setCurrentRoutine={setCurrentRoutine}
+          currentRoutine={currentRoutine}
           setOpen={setOpen}
           open={open}
         />
