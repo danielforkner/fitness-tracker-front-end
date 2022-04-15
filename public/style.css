@@ -125,22 +125,35 @@
 /* SIDE BAR ENDS HERE*/
 
 .routineModalContainer {
-  width: 60%;
-  height: 80%;
-  top: 5%;
+  display: inline-flex;
+  max-width: 70%;
+  max-height: 80%;
+  top: 15%;
   left: 20%;
-  padding: 10%;
-  overflow-y: hidden;
+  border-radius: .5rem;
+}
+.modal-dialog{  
+  max-width: 100%;
+  max-height: 100%;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  margin: 1px;
+ 
+  
+
 }
 .modal-content {
   height: 100%;
+  max-width: 100%;
+  flex:1;
 }
 .modal-header {
   height: 10%;
 }
 .routineModalBody * {
   height: 40%;
-  flex: 1;
+  overflow-y: auto;
 }
 .modal-footer {
   height: 10%;
