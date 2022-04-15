@@ -9,9 +9,9 @@ const Activities = () => {
   return (
     <div className="activitiesContainer">
 
-      <h4>Activities Container</h4>
+      <h4 className="ftHeader">Activities Center</h4>
       <button
-        className="btn btn-secondary"
+        className="btn btn-outline-secondary"
         onClick={() => setOpenNewActivity(true)}
       >
         Add New Activity

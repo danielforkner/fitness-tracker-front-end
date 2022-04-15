@@ -44,13 +44,13 @@ const NewActivity = ({ openNewActivity, setOpenNewActivity }) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <Button style={{ margin: '10px 0' }} onClick={handleSubmit}>
+          <Button variant="btn btn-outline-secondary" onClick={handleSubmit}>
             Submit
           </Button>
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleHide}>
+        <Button variant="btn btn-outline-secondary" onClick={handleHide}>
           Close
         </Button>
       </Modal.Footer>

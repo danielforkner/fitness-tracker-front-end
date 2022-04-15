@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { Modal, Button } from 'react-bootstrap';
 import { newRoutineActivityy, deleteRoutineActivity } from '../../api/fetch';
 import useAuth from '../hooks/useAuth';
@@ -115,6 +116,7 @@ const RoutineDetails = ({
               setSelectedActivity={setSelectedActivity}
               handleSubmitAddActivity={handleSubmitAddActivity}
             />
+
           ) : null}
         </div>
       </Modal.Body>
