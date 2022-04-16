@@ -19,6 +19,7 @@ const Routines = ({ setCurrentRoutine, setOpen }) => {
 
   return (
     <div className="routinesContainer">
+      <h4 className="ftHeader">Routines Center</h4>
       {pubRoutines.map((routine, i) => {
         return (
           <RoutineCard

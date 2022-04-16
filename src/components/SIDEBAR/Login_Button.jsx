@@ -18,7 +18,7 @@ const Login_Button = ({ setOpenLogin }) => {
       <i className="NavIcon bi bi-person-lines-fill"></i>
       <h1 className="ftHeader loginHeader card-title">
         {' '}
-        {user.username ? `Hello, ${user.username}` : 'Please Log In'}
+        {user.username ? `${user.username}` : 'Log In'}
       </h1>
       {user.username ? (
         <div
