@@ -69,7 +69,7 @@ const Login = ({ openLogin, setOpenLogin }) => {
             type="text"
             name="username"
             placeholder="Username...."
-            className="ftSubBodyText ftInputBG ftInput"
+            className="ftInputText ftInputBG ftInput"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -80,7 +80,7 @@ const Login = ({ openLogin, setOpenLogin }) => {
             type="password"
             name="password"
             placeholder="Password..."
-            className="ftSubBodyText ftInputBG ftInput"
+            className="ftInputText ftInputBG ftInput"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

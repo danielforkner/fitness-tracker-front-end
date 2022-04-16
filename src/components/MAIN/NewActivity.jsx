@@ -51,7 +51,7 @@ const NewActivity = ({ openNewActivity, setOpenNewActivity }) => {
             type="text"
             name="name"
             placeholder="Activity Name"
-            className="ftSubBodyText ftInputBG ftInput"
+            className="ftInputText ftInputBG ftInput"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -62,7 +62,7 @@ const NewActivity = ({ openNewActivity, setOpenNewActivity }) => {
             type="text"
             name="description"
             placeholder="Description..."
-            className="ftSubBodyText ftInputBG ftInput"
+            className="ftInputText ftInputBG ftInput"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />

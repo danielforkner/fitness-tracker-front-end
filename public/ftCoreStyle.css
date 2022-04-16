@@ -1,85 +1,86 @@
 body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    
-  }
-  body * {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #241825;
-  }
-  /* Main Component */
-  .main {
-    width: 70%;
-    height: 100vh;
-    float: right;
-    align-items: center;
-    overflow-y: scroll;
-  }
-  
-  .main * {
-    display: flex;
-    flex: 1;
-  }
-  /* Main Component End */
-  /* SideBar Component */
-  .sideBarContainer {
-    height: 100vh;
-    width: 30%;
-    float: left;
-    flex-flow: column nowrap;
-    align-items: center;
-  }
-  .sideBarContainer * {
-    display: flex;
-    flex: 1;
-    flex-flow: column nowrap;
-   
-  }
-  .card {
-    background-color: #091F1B;
-    border-radius: .6rem;
-    box-shadow: .1px .1px 5px #481754;
-  }
-  .card * {background-color: #091F1B}
-   /* SideBar Component */
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+}
+body * {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #241825;
+}
+/* Main Component */
+.main {
+  width: 70%;
+  height: 100vh;
+  float: right;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.main * {
+  display: flex;
+  flex: 1;
+}
+/* Main Component End */
+/* SideBar Component */
+.sideBarContainer {
+  height: 100vh;
+  width: 30%;
+  float: left;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.sideBarContainer * {
+  display: flex;
+  flex: 1;
+  flex-flow: column nowrap;
+}
+.card {
+  background-color: #091f1b;
+  border-radius: 0.6rem;
+  box-shadow: 0.1px 0.1px 5px #481754;
+}
+.card * {
+  background-color: #091f1b;
+}
+/* SideBar Component */
 /* *************** Core Style Definitions ******************************** */
 
 .ftSubBG {
-    background-color: #280C2F
+  background-color: #280c2f;
 }
-  .ftHeader {
-    color:#8fecd5;
-  }
-  
-  .ftBodyText {
-    color: #C7E6DD;
-  }
-  .ftSubBodyText {
-    color: #F7F2F8;
-  }
-  .ftIcon {
-    color: #F7F2F8;
-  }
+.ftHeader {
+  color: #8fecd5;
+}
 
-  /*  ****Popouts****  */
-  .ftPopout {
-   background-color: #091F1B;
-  }
- 
+.ftBodyText {
+  color: #c7e6dd;
+}
+.ftSubBodyText {
+  color: #f7f2f8;
+}
+.ftIcon {
+  color: #f7f2f8;
+}
+.ftInputText {
+  color: #280c2f;
+}
 
-  /* ***Fields*** */
-  .ftInput{
-    margin: 2%;
-    padding: .7% .7% .7% 1%;
-    max-width: 60%;
-    border-radius: .5rem;
-  }
-  .ftInputBG {
-    background-color: #cec4d0;
-  }
-  
+/*  ****Popouts****  */
+.ftPopout {
+  background-color: #091f1b;
+}
+
+/* ***Fields*** */
+.ftInput {
+  margin: 2%;
+  padding: 0.7% 0.7% 0.7% 1%;
+  max-width: 60%;
+  border-radius: 0.5rem;
+}
+.ftInputBG {
+  background-color: #cec4d0;
+}

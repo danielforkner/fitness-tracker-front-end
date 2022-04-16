@@ -35,14 +35,14 @@ const EditRoutineActivityForm = ({
       <input
         name="count"
         value={count}
-        className="ftSubBodyText ftInputBG ftInput"
+        className="ftInputText ftInputBG ftInput"
         onChange={(e) => setCount(e.target.value)}
       ></input>
       <label htmlFor="duration">Duration: </label>
       <input
         name="duration"
         value={duration}
-        className="ftSubBodyText ftInputBG ftInput"
+        className="ftInputText ftInputBG ftInput"
         onChange={(e) => setDuration(e.target.value)}
       ></input>
       <button

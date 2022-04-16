@@ -53,7 +53,7 @@ const ActivityCard = ({ activity, toast, setToast, setActivID }) => {
               <input
                 type="text"
                 name="name"
-                className="ftSubBodyText ftInputBG ftInput"
+                className="ftInputText ftInputBG ftInput"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -62,7 +62,7 @@ const ActivityCard = ({ activity, toast, setToast, setActivID }) => {
               New Description:
               <input
                 type="text"
-                className="ftSubBodyText ftInputBG ftInput"
+                className="ftInputText ftInputBG ftInput"
                 name="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}

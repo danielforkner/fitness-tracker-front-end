@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { deleteRoutine } from '../../api/fetch';
 import useAuth from '../hooks/useAuth';
+import EditRoutine from './EditRoutine';
 
 const RoutineCard = ({
   routine,
@@ -9,6 +10,7 @@ const RoutineCard = ({
   userRoutines,
   setUserRoutines,
 }) => {
+  const [isEditRoutine, setIsEditRoutine] = useState(false);
   const { user, token } = useAuth();
   const handleClick = () => {
     setCurrentRoutine(routine);
@@ -38,6 +40,23 @@ const RoutineCard = ({
             ? 'See Activities / Edit'
             : 'See Activities'}
         </div>
+        {user.username === routine.creatorName ? (
+          <div
+            onClick={() => {
+              setIsEditRoutine(!isEditRoutine);
+            }}
+            className="btn btn-outline-secondary"
+          >
+            Edit Routine
+          </div>
+        ) : null}
+        {isEditRoutine ? (
+          <EditRoutine
+            setUserRoutines={setUserRoutines}
+            setIsEditRoutine={setIsEditRoutine}
+            routine={routine}
+          />
+        ) : null}
         {user.username === routine.creatorName ? (
           <div onClick={handleDelete} className="btn btn-outline-primary">
             Delete Routine
