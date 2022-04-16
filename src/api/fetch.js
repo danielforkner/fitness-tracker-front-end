@@ -161,11 +161,14 @@ export const usersRoutines = async (username) => {
 //----------------------------------------------------------------
 export const pubRoutinesWithActivity = async (activityID) => {
   try {
-    const response = await fetch(`${apiURL}/activities/${activityID}/routines`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const response = await fetch(
+      `${apiURL}/activities/${activityID}/routines`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     const data = await response.json();
     return data;
   } catch (e) {
@@ -251,7 +254,6 @@ export const newRoutineActivityy = async (
       }),
     });
     const data = await response.json();
-    console.log(data, 'data');
     return data;
   } catch (e) {
     console.error(e);

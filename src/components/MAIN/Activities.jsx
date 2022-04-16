@@ -16,7 +16,6 @@ const Activities = ({ setCurrentRoutine, setOpen }) => {
     const routByActiv = async () => {
       const data = await pubRoutinesWithActivity(activID);
       setActivRoutines(data);
-      console.log(activRoutines, 'hello ');
       return;
     };
     routByActiv();
@@ -81,7 +80,7 @@ const Activities = ({ setCurrentRoutine, setOpen }) => {
               {activRoutines && activRoutines.length ? (
                 activRoutines.map((element, i) => {
                   return (
-                    <li className="bodyItemOC">
+                    <li className="bodyItemOC" key={`sidebarRoutines:${i}`}>
                       <div key={`${element.name} + ${i}.sub`}>
                         {element.name}
                       </div>

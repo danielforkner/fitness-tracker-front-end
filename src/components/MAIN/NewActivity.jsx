@@ -4,17 +4,32 @@ import { postActivity } from '../../api/fetch';
 import useAuth from '../hooks/useAuth';
 
 const NewActivity = ({ openNewActivity, setOpenNewActivity }) => {
-  const { token } = useAuth();
+  const { token, allActivities, setAllActivities } = useAuth();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleHide = () => {
     setOpenNewActivity(false);
   };
 
   const handleSubmit = async () => {
-    const response = await postActivity(name, description, token);
-    console.log('New Activity Response ln15 newactivity.jsx', response);
+    try {
+      const response = await postActivity(name, description, token);
+      if (response.error) {
+        setIsError(true);
+        setErrorMessage(response.message);
+      } else {
+        setOpenNewActivity(false);
+        console.log('ADD ME TO ALLACTIVITIES', response);
+      }
+    } catch (error) {
+      throw error;
+    } finally {
+      setName('');
+      setDescription('');
+    }
   };
 
   return (
@@ -47,6 +62,9 @@ const NewActivity = ({ openNewActivity, setOpenNewActivity }) => {
           <Button variant="btn btn-outline-secondary" onClick={handleSubmit}>
             Submit
           </Button>
+          {isError ? (
+            <div className="newActErrorMessage">{`Please try again: ${errorMessage}`}</div>
+          ) : null}
         </form>
       </Modal.Body>
       <Modal.Footer>

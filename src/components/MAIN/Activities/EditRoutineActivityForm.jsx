@@ -25,7 +25,6 @@ const EditRoutineActivityForm = ({
           activity.duration = duration;
         }
       });
-      console.log('AFTER', currentRoutine);
       setCurrentRoutine(currentRoutine);
       setEditActivity(false);
     }
