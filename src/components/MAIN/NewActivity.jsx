@@ -35,7 +35,7 @@ const NewActivity = ({ openNewActivity, setOpenNewActivity }) => {
     <Modal
       show={openNewActivity}
       onHide={handleHide}
-      className="newActivityModalContainer"
+      className="modalContainer"
     >
       <Modal.Header>
         <Modal.Title as="h3" className="ftHeader">

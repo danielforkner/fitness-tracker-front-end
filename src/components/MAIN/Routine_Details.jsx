@@ -113,18 +113,18 @@ const RoutineDetails = ({
                   {ourRoutine ? (
                     <>
                       <div
-                        className="deleteActivityBtn"
-                        onClick={() => deleteActivity(activity)}
-                      >
-                        DELETE
-                      </div>
-                      <div
-                        className="deleteActivityBtn"
+                        className="editActivityBtn"
                         onClick={() => {
                           setEditActivity(!editActivity);
                         }}
                       >
                         EDIT
+                      </div>
+                      <div
+                        className="deleteActivityBtn"
+                        onClick={() => deleteActivity(activity)}
+                      >
+                        DELETE
                       </div>
                     </>
                   ) : null}
