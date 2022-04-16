@@ -199,10 +199,14 @@ export const createRoutine = async (name, goal, isPublic, token) => {
   }
 };
 //----------------------------------------------------------------
-export const editRoutine = async (id, name, goal) => {
+export const editRoutine = async (id, name, goal, token) => {
   try {
     const response = await fetch(`${apiURL}/routines/${id}`, {
       method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({
         name: `${name}`,
         goal: `${goal}`,

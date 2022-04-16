@@ -42,7 +42,7 @@ const CreateRoutine = ({
     <Modal
       show={openCreateRoutine}
       onHide={handleHide}
-      className="createRoutine ModalContainer"
+      className="createRoutine ModalContainer modalContainer"
     >
       <Modal.Header>
         <Modal.Title as="h3" className="ftHeader">
@@ -55,7 +55,7 @@ const CreateRoutine = ({
           <input
             type="text"
             name="name"
-            className="ftHeader"
+            className="ftInputText ftInputBG ftInput"
             placeholder="Ready for Summer...."
             value={goalName}
             onChange={(e) => setGoalName(e.target.value)}
@@ -64,7 +64,7 @@ const CreateRoutine = ({
           <input
             type="text"
             name="description"
-            className="ftHeader"
+            className="ftInputText ftInputBG ftInput"
             placeholder="Combination of cardio and strength"
             value={goalDescription}
             onChange={(e) => setGoalDescription(e.target.value)}
