@@ -9,7 +9,8 @@
 }
 
 .loginModalContainer,
-.routineModalContainer {
+.routineModalContainer,
+.modalContainer {
   height: auto;
 }
 
@@ -65,8 +66,18 @@
   line-height: unset;
 }
 
-.deleteActivityBtn:hover {
-  background-color: red;
+.deleteActivityBtn {
+  text-decoration: underline;
+  color: red;
+}
+.editActivityBtn {
+  text-decoration: underline;
+  color: #8fecd5;
+}
+
+.deleteActivityBtn:hover,
+.editActivityBtn:hover {
+  background-color: #f7f2f8;
 }
 /* ROUTINES ENDS HERE*/
 
@@ -144,7 +155,8 @@
 }
 /* SIDE BAR ENDS HERE*/
 
-.routineModalContainer {
+.routineModalContainer,
+.modalContainer {
   display: inline-flex;
   max-width: 70%;
   max-height: 80%;
@@ -231,6 +243,7 @@
   margin: 7% 3% 3% 3%;
 }
 .bodyItemOC {
+  background-color: #481754;
   flex-flow: row wrap;
   flex-direction: column;
   gap: 5px;

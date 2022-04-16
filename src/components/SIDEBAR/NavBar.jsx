@@ -21,10 +21,10 @@ const NavBar = ({ setOpenCreateRoutine }) => {
         </Link>
       ) : null}
       <Link
-        to="/"
+        to="/routines"
         data-bs-toggle="tooltip"
         data-bs-placement="bottom"
-        title="Main2"
+        title="Routines"
         onClick={() => setIsActivities(false)}
       >
         <i className="NavIcon ftIcon bi bi-grid-1x2-fill"></i>
@@ -33,7 +33,7 @@ const NavBar = ({ setOpenCreateRoutine }) => {
         to="/activities"
         data-bs-toggle="tooltip"
         data-bs-placement="bottom"
-        title="aAtivities"
+        title="Activities"
         onClick={() => setIsActivities(true)}
       >
         <i className="NavIcon ftIcon bi bi-fullscreen"></i>

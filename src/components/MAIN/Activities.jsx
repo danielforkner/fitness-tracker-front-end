@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ActivityCard from './ActivityCard';
 import NewActivity from './NewActivity';
+import RoutinesWithActivitiesFlag from './RoutinesWithActivitiesFlag';
 import useAuth from '../hooks/useAuth';
 import { pubRoutinesWithActivity } from '../../api/fetch';
 
@@ -10,7 +11,7 @@ const Activities = ({ setCurrentRoutine, setOpen }) => {
   const [flag, setFlag] = useState(false);
   const [activID, setActivID] = useState(null);
   const [activRoutines, setActivRoutines] = useState([]);
-  const { allActivities } = useAuth();
+  const { allActivities, user } = useAuth();
 
   useEffect(() => {
     const routByActiv = async () => {
@@ -30,12 +31,14 @@ const Activities = ({ setCurrentRoutine, setOpen }) => {
   return (
     <div className="activitiesContainer">
       <h4 className="ftHeader">Activities Center</h4>
-      <button
-        className="btn btn-outline-secondary"
-        onClick={() => setOpenNewActivity(true)}
-      >
-        Add New Activity
-      </button>
+      {user.username ? (
+        <button
+          className="btn btn-outline-secondary"
+          onClick={() => setOpenNewActivity(true)}
+        >
+          Add New Activity
+        </button>
+      ) : null}
 
       {allActivities.map((activity, i) => {
         return (
@@ -56,53 +59,12 @@ const Activities = ({ setCurrentRoutine, setOpen }) => {
         />
       )}
       {flag ? (
-        <div
-          className="routinesPopOut ftPopout offcanvas offcanvas-end"
-          tabIndex="-1"
-          id="offcanvasRight"
-          aria-labelledby="offcanvasRightLabel"
-        >
-          <div className="headerOC offcanvas-header">
-            <h5 id="offcanvasRightLabel">Routines with Activity: </h5>
-            <button
-              type="button"
-              className="btn-close text-reset"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-              onClick={() => {
-                setFlag(false);
-              }}
-            ></button>
-          </div>
-          <div className="bodyOC offcanvas-body">
-            <ul className="routListOC">
-              <li className="bodyOCHeader"> Routines: </li>
-              {activRoutines && activRoutines.length ? (
-                activRoutines.map((element, i) => {
-                  return (
-                    <li className="bodyItemOC" key={`sidebarRoutines:${i}`}>
-                      <div key={`${element.name} + ${i}.sub`}>
-                        {element.name}
-                      </div>
-                      <div
-                        key={`${element.name} + ${i}.button`}
-                        className="buttonListOC btn btn-outline-secondary"
-                        onClick={() => {
-                          setOpen(true);
-                          setCurrentRoutine(element);
-                        }}
-                      >
-                        Details
-                      </div>
-                    </li>
-                  );
-                })
-              ) : (
-                <li>Sorry, there are no routines with this activity yet</li>
-              )}
-            </ul>
-          </div>
-        </div>
+        <RoutinesWithActivitiesFlag
+          setFlag={setFlag}
+          activRoutines={activRoutines}
+          setOpen={setOpen}
+          setCurrentRoutine={setCurrentRoutine}
+        />
       ) : null}
     </div>
   );

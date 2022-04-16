@@ -50,7 +50,11 @@ const Login = ({ openLogin, setOpenLogin }) => {
   };
 
   return (
-    <Modal show={openLogin} onHide={handleHide} className="loginModalContainer">
+    <Modal
+      show={openLogin}
+      onHide={handleHide}
+      className="loginModalContainer modalContainer"
+    >
       <Modal.Header>
         <Modal.Title as="h3" className="ftHeader">
           {isRegister ? `Register` : `Login`}
