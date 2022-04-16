@@ -29,9 +29,9 @@ const MyRoutines = ({
   //--------------------------------------------------------------------------------------------------------------------------------
   return (
     <div className="myRoutinesContainer">
-      <h2 className="ftHeader">MY ROUTINES</h2>
       {user.username ? (
         <>
+          <h2 className="ftHeader">MY ROUTINES</h2>
           {userRoutines.map((routine, i) => {
             return (
               <RoutineCard

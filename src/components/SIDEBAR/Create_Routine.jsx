@@ -51,7 +51,7 @@ const CreateRoutine = ({
       </Modal.Header>
       <Modal.Body className="createRoutine ftHeader ModalBody">
         <form>
-          <label htmlFor="name">Goal Name: </label>
+          <label htmlFor="name">Routine Name: </label>
           <input
             type="text"
             name="name"
@@ -60,7 +60,7 @@ const CreateRoutine = ({
             value={goalName}
             onChange={(e) => setGoalName(e.target.value)}
           />
-          <label htmlFor="description">Description: </label>
+          <label htmlFor="description">Goal: </label>
           <input
             type="text"
             name="description"

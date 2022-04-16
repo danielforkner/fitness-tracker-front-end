@@ -100,15 +100,16 @@ const RoutineDetails = ({
       </Modal.Header>
       <Modal.Body className="ftBodyText routineModalBody">
         <div>
-          <div>{currentRoutine.goal}</div>
-          <div>
-            {activities.length > 0 ? `Activities:` : 'No Activities'}
+          <div className="routineGoal">{currentRoutine.goal}</div>
+          <div className="routineActivities">
+            {activities.length > 0 ? <h5>Activities:</h5> : 'No Activities'}
             {activities.map((activity) => {
               return (
                 <div className="activityCard" key={activity.id}>
                   <h4>{`${activity.name}`}</h4>
                   <p>{activity.description}</p>
-                  <p>{`Count: ${activity.count} Duration: ${activity.duration}`}</p>
+                  <p>{`Count: ${activity.count}`}</p>
+                  <p> {`Duration: ${activity.duration}`}</p>
                   {ourRoutine ? (
                     <>
                       <div
@@ -142,7 +143,7 @@ const RoutineDetails = ({
           </div>
           {ourRoutine ? (
             <button
-              className="btn btn-outline-secondary"
+              className="btn btn-outline-primary"
               onClick={() => {
                 setAddActivity(!addActivity);
               }}

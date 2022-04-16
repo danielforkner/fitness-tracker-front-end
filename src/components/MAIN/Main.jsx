@@ -21,7 +21,15 @@ const Main = ({ currentRoutine, setCurrentRoutine, open, setOpen }) => {
           }
         ></Route>
 
-        <Route path="/Activities" element={<Activities />}></Route>
+        <Route
+          path="/Activities"
+          element={
+            <Activities
+              setCurrentRoutine={setCurrentRoutine}
+              setOpen={setOpen}
+            />
+          }
+        ></Route>
       </Routes>
       {open && (
         <RoutineDetails
