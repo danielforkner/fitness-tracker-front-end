@@ -22,7 +22,6 @@ const NewActivity = ({ openNewActivity, setOpenNewActivity }) => {
         setErrorMessage(response.message);
       } else {
         setOpenNewActivity(false);
-        console.log('ADD ME TO ALLACTIVITIES', response);
       }
     } catch (error) {
       throw error;
@@ -39,23 +38,31 @@ const NewActivity = ({ openNewActivity, setOpenNewActivity }) => {
       className="newActivityModalContainer"
     >
       <Modal.Header>
-        <Modal.Title as="h3">New Activity</Modal.Title>
+        <Modal.Title as="h3" className="ftHeader">
+          New Activity
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body className="newActivityModalBody">
         <form>
-          <label htmlFor="username">Name: </label>
+          <label htmlFor="username" className="ftBodyText">
+            Name:{' '}
+          </label>
           <input
             type="text"
             name="name"
             placeholder="Activity Name"
+            className="ftSubBodyText ftInputBG ftInput"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <label htmlFor="description">Description: </label>
+          <label htmlFor="description" className="ftBodyText">
+            Description:{' '}
+          </label>
           <input
             type="text"
             name="description"
             placeholder="Description..."
+            className="ftSubBodyText ftInputBG ftInput"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
